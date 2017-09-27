@@ -1,6 +1,0 @@
-The system shall display statistics about the user.
-
-The system shall generate a cooking calendar.
-
-The system shall allow the user to search for recipes based on their nutrition facts.
-

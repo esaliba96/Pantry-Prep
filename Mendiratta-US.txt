@@ -1,0 +1,3 @@
+As a user, I want a smart way to plan my meals for the week, so I don’t eat ramen every night.
+As a user, I want to create a shopping list for my week’s meals, so I don’t exceed my budget.
+As a user, I want nutrition information for everything I consume during the week, so I can maintain calorie and macronutrient levels.

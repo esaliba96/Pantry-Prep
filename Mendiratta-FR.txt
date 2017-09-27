@@ -1,0 +1,3 @@
+The system shall display nutritional facts when a meal is selected.
+The system shall have a printable page for users to print their weekly shopping list.
+The system shall have a drag-and-drop feature for planning weekly meals.

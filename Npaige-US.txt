@@ -1,0 +1,12 @@
+Noah Paige
+
+Three User Stories
+
+User Story 1 
+As a user, I want to print out a grocery list of my chosen meals, so that I can buy them all at the beginning of the week.
+
+User Story 2
+As a user, I want to view the nutrition facts and statistics for my whole week, so that I can plan my diet better.
+
+User Story 3
+As a user, I want to see informational, step-by-step instructions on how to cook the meals, so that it is easier for me to understand how to make the meals.

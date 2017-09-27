@@ -1,0 +1,3 @@
+The system shall allow users to add recipes
+The system shall allow users to download recipes 
+The system shall allow users to create weekly meal templates 

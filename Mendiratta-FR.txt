@@ -1,3 +1,5 @@
-The system shall display nutritional facts when a meal is selected.
-The system shall have a printable page for users to print their weekly shopping list.
-The system shall have a drag-and-drop feature for planning weekly meals.
+The system shall provide nutritional information for a selected meal.
+The system shall provide nutritional information for a selected week.
+The system shall allow users to insert custom ingredients into the weekly shopping list.
+The system shall provide the total cost for a selected meal.
+The system shall provide the total cost for a selected week.

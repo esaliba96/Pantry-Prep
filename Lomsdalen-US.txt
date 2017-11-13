@@ -1,0 +1,3 @@
+As a user, I want to print recipes for the weekly meals selected, so that I can print all the recipes for the week at once.
+As a user, I want to select from premade weekly meal plans, so that I can choose diets high in protein.  
+As a user, I want to drag & drop meals onto the weekly planner, so that I can add meals for each day.

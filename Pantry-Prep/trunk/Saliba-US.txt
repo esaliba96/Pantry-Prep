@@ -1,3 +1,0 @@
-As a user, I want to print a shopping list for a selected meal, so that I can shop for one meal at a time if needed.
-As a user, I want to print a shopping lists for the week, so that I can shop for all ingredients over the weekend.
-As a user, I want to print recipes for meals, so that I can refer to them while cooking.

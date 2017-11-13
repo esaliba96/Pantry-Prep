@@ -1,7 +1,0 @@
-Noah Paige
-
-System Requirements
-
-The system shall have a meal plan calendar view.
-The system shall consolidate and sum repeat ingredients on the grocery list.
-The system shall have a nutrition facts and meal statistics page.

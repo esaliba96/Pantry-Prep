@@ -1,3 +1,0 @@
-As a user, I want to add my own recipes, so that I can use recipes outside the app.
-As a user, I want to download recipe libraries, so that I can access my recipes when I am offline.
-As a user, I want to create weekly templates, so that I don't have to plan my week from scratch

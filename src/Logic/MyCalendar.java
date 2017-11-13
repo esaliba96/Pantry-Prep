@@ -9,7 +9,8 @@ import java.util.GregorianCalendar;
 
 public class MyCalendar {
 	private LinkedList<Week> weeks;
-	private Calendar currentDay; 
+	public Calendar currentDay; 
+	public Calendar selectedDay;
 	private int index = 0;
 	public MyCalendar(Calendar currentDay){
 		Calendar c = Calendar.getInstance();

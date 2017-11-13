@@ -1,21 +1,26 @@
 package Logic;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.Calendar;import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
-public class PantryPrep {
+
+public class PantryPrep extends Application{
 	
 	public static void main(String[] args) {
-		Date currentDay;
-		Calendar calendar = Calendar.getInstance();
-		try {
-			currentDay = new SimpleDateFormat("M/dd/yyyy").parse("11/12/2017");
-			calendar.setTime(currentDay);
-			MyCalendar myCalendar = new MyCalendar(calendar);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Calendar currentDay = Calendar.getInstance();
+		MyCalendar myCal = new MyCalendar(currentDay);
+		launch(args);
+	}
+
+	@Override
+	public void start(Stage stage) throws Exception {
+		stage.setTitle("PantryPrep");
+		
 	}
 }

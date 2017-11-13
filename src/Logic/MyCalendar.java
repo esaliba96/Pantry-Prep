@@ -23,6 +23,7 @@ public class MyCalendar {
 		weeks.add(new Week(CalendarUtil.getOffsetDate(c,(c.get(Calendar.DAY_OF_WEEK) * -1) + 1)));
 	}
 	public Week getWeek(){
+		System.out.println(index);
 		return weeks.get(index);
 	}
 	public void nextWeek(){

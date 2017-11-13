@@ -48,4 +48,16 @@ public class CalendarUtil {
 		}
 		return "error";
 	}
+	public static boolean compareDates(Calendar a,Calendar b){
+		if (a.get(Calendar.DAY_OF_MONTH) != b.get(Calendar.DAY_OF_MONTH)){
+			return false;
+		}
+		if (a.get(Calendar.MONTH) != b.get(Calendar.MONTH)){
+			return false;
+		}
+		if (a.get(Calendar.YEAR) != b.get(Calendar.YEAR)){
+			return false;
+		}
+		return true;
+	}
 }

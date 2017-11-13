@@ -9,10 +9,8 @@ import javafx.scene.control.Button;
 public class DayButton implements ButtonFactory {
 	Button dayButton;
 	private int dayOfWeek;
-	private Calendar day;
 	public DayButton(Calendar day, MyCalendar c,UpdateFrame uf){
 		dayButton = new Button("" + day.get(Calendar.DAY_OF_MONTH));
-		this.day = day;
 		this.dayOfWeek = day.get(Calendar.DAY_OF_WEEK);
 		uf.addFactory(this);
 		write(c);
@@ -24,17 +22,19 @@ public class DayButton implements ButtonFactory {
 		});
 	}
 	public void write(MyCalendar c){
-		System.out.println("updating");
-		day = c.getWeek().getDay(dayOfWeek);
+		Calendar day = c.getWeek().getDay(dayOfWeek -1);
 		dayButton.setText("" + day.get(Calendar.DAY_OF_MONTH));
-		if (c.currentDay.equals(c.selectedDay) && c.currentDay.equals(day)){
+		if (CalendarUtil.compareDates(c.currentDay, c.selectedDay) && c.selectedDay.equals(day)){
 			dayButton.setStyle("-fx-background-color:#ff00ff");
 		}
 		else if (c.selectedDay.equals(day)){
 			dayButton.setStyle("-fx-background-color:#ff0000");
 		}
-		else if (c.currentDay.equals(day)){
+		else if (CalendarUtil.compareDates(day, c.currentDay)){
 			dayButton.setStyle("-fx-background-color:#0000ff");
+		}
+		else {
+			dayButton.setStyle("-fx-background-color:#00ff00");
 		}
 	}
 }

@@ -33,9 +33,12 @@ public class MyCalendar {
 		}
 	}
 	public void prevWeek(){
-		index--;
-		if (index < 0){
-			Calendar prevSunday = CalendarUtil.getOffsetDate(weeks.get(index + 1).getDay(DayOfWeek.SUNDAY),-7);
+		if (index == 0){
+			Calendar prevSunday = CalendarUtil.getOffsetDate(weeks.get(index).getDay(DayOfWeek.SUNDAY),-7);
+			weeks.addFirst(new Week(prevSunday));
+		}
+		else{
+			index--;
 		}
 	}
 }

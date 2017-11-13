@@ -12,6 +12,7 @@ public class DayButton implements ButtonFactory {
 	private Calendar day;
 	public DayButton(Calendar day, MyCalendar c,UpdateFrame uf){
 		dayButton = new Button("" + day.get(Calendar.DAY_OF_MONTH));
+		this.day = day;
 		this.dayOfWeek = day.get(Calendar.DAY_OF_WEEK);
 		uf.addFactory(this);
 		write(c);
@@ -24,7 +25,8 @@ public class DayButton implements ButtonFactory {
 	}
 	public void write(MyCalendar c){
 		System.out.println("updating");
-		dayButton.setText("" + c.getWeek().getDay(dayOfWeek).get(Calendar.DAY_OF_MONTH));
+		day = c.getWeek().getDay(dayOfWeek);
+		dayButton.setText("" + day.get(Calendar.DAY_OF_MONTH));
 		if (c.currentDay.equals(c.selectedDay) && c.currentDay.equals(day)){
 			dayButton.setStyle("-fx-background-color:#ff00ff");
 		}

@@ -20,6 +20,10 @@ public class WeeklyViewScene {
 		}
 		dayLayer.getChildren().add(new SwitchWeeksButton(1,c,"->",uf).switchButton);
 		root.getChildren().add(dayLayer);
+		HBox recipeLayer = new HBox();
+		RecipeScrollPane rsp = new RecipeScrollPane("trevor put arraylist here");
+		recipeLayer.getChildren().add(rsp.sp);
+		root.getChildren().add(recipeLayer);
 		return new Scene(root,400,400);
 	}
 }

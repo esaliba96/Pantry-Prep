@@ -12,15 +12,16 @@ import javafx.event.EventHandler;
 
 public class PantryPrep extends Application{
 	
-	public static void main(String[] args) {
-		Calendar currentDay = Calendar.getInstance();
-		MyCalendar myCal = new MyCalendar(currentDay);
+	public static void main(String[] args) {		
 		launch(args);
 	}
 
 	@Override
 	public void start(Stage stage) throws Exception {
+		Calendar currentDay = Calendar.getInstance();
+		MyCalendar myCal = new MyCalendar(currentDay);
 		stage.setTitle("PantryPrep");
-		
+		stage.setScene(WeeklyViewScene.getScene(myCal));
+		stage.show();
 	}
 }

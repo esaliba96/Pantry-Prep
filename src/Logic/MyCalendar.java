@@ -16,6 +16,7 @@ public class MyCalendar {
 		Calendar c = Calendar.getInstance();
 		weeks = new LinkedList<Week>();
 		this.currentDay = currentDay;
+		this.selectedDay = currentDay;
 		System.out.println("dayOfYear: " + c.get(Calendar.DAY_OF_YEAR));
 		System.out.println("year: " + c.get(Calendar.DAY_OF_YEAR));
 		System.out.println("dayOfWeek" + c.get(Calendar.DAY_OF_WEEK));

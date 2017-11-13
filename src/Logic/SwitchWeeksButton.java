@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 
 public class SwitchWeeksButton {
 	Button switchButton;
-	public SwitchWeeksButton(int offset, MyCalendar c,String text){
+	public SwitchWeeksButton(int offset, MyCalendar c,String text,UpdateFrame uf){
 		switchButton = new Button("" + text);
 		switchButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
@@ -20,6 +20,7 @@ public class SwitchWeeksButton {
 						c.nextWeek();
 					}
 				}
+				uf.update(c);
 			}
 		});
 	}

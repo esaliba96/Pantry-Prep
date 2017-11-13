@@ -1,0 +1,3 @@
+The system shall print all the recipes for the week.
+The system shall provide premade weekly meal plans.
+The system shall let user drag & drop meals onto the calendar.

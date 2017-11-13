@@ -1,0 +1,3 @@
+The system shall provide a shopping list for a selected meal.
+The system shall provide a weekly shopping list based on selected meals.
+The system shall provide recipes for selected meals.

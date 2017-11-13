@@ -8,8 +8,8 @@ public class Week {
 	public Week(Calendar sunday){
 		this.sunday = sunday;
 	}
-	public Calendar getDay(int day){
-		return CalendarUtil.getOffsetDate(sunday, day);
+	public Calendar getDay(int dayOfWeek){
+		return CalendarUtil.getOffsetDate(sunday, dayOfWeek);
 	}
 	public Calendar getDay(DayOfWeek weekDay){
 		switch(weekDay){
@@ -22,5 +22,8 @@ public class Week {
 			case SATURDAY:return CalendarUtil.getOffsetDate(sunday, 6);
 		}
 		return null;
+	}
+	public Day getDayRecipes(int dayOfWeek){
+		return days[dayOfWeek];
 	}
 }

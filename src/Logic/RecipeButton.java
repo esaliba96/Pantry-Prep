@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 public class RecipeButton {
 	
 	Button recipeButton;
-	public RecipeButton(int offset, MyCalendar c, Recipe r, UpdateFrame uf){
+	public RecipeButton(Recipe r){
 		recipeButton = new Button(r.getName());
 		recipeButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {

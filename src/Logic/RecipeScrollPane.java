@@ -11,7 +11,7 @@ public class RecipeScrollPane {
 		sp = new ScrollPane();
 		VBox myList = new VBox();
 		for (int i = 0;i < recipeList.size();i++){
-			//myList.getChildren().add();   
+			myList.getChildren().add(new RecipeButton(recipeList.get(i)).recipeButton);   
 		}
 		sp.setContent(myList);
 	}

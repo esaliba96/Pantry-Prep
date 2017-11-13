@@ -1,14 +1,15 @@
 package Logic;
 
+import java.util.*;
 
 public class Recipe{
-   private ArrayList<Ingredients> ingredientList;
+   private ArrayList<Ingredient> ingredientList;
    private String description;
    private String name;
    private ArrayList<String> instructionList;
 
    public Recipe(String name, String description, 
-      ArrayList<Ingredients> ingredientList, ArrayList<String> instructionList){
+      ArrayList<Ingredient> ingredientList, ArrayList<String> instructionList){
 
          this.name = name;
          this.description = description;
@@ -16,19 +17,19 @@ public class Recipe{
          this.instructionList = instructionList;
    }
 
-   public getName(){
+   public String getName(){
       return name;
    }
 
-   public getDescription(){
+   public String getDescription(){
       return description;
    }
 
-   public getInstructionList(){
+   public ArrayList<String> getInstructionList(){
       return instructionList;
    }
 
-   public getIngredientList(){
+   public ArrayList<Ingredient> getIngredientList(){
       return ingredientList;
    }
 }

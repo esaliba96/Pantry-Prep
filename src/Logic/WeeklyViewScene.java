@@ -22,9 +22,11 @@ public class WeeklyViewScene {
 		dayLayer.getChildren().add(new SwitchWeeksButton(1,c,"->",uf).switchButton);
 		root.getChildren().add(dayLayer);
 		HBox recipeLayer = new HBox();
-		
-		
-		
+		VBox mealSlots = new VBox();
+		for (int i = 0; i < 3; i++){
+			MealSlotButton msb = new MealSlotButton(c,uf,i);
+			mealSlots.getChildren().add(msb.mealSlotButton);
+		}
 		//For display testing. Delete later
 		//====================================================
 		ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
@@ -49,7 +51,6 @@ public class WeeklyViewScene {
 		iList1.add(i1);
 		iList1.add(i2);
 		
-		
 		Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs recipe", 
 				iList, sList);
 		
@@ -61,7 +62,7 @@ public class WeeklyViewScene {
 		//====================================================
 		
 		RecipeScrollPane rsp = new RecipeScrollPane(recipeList);
-		recipeLayer.getChildren().add(rsp.sp);
+		recipeLayer.getChildren().addAll(mealSlots,rsp.sp);
 		root.getChildren().add(recipeLayer);
 		return new Scene(root,400,400);
 	}

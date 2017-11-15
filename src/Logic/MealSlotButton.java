@@ -14,6 +14,7 @@ public class MealSlotButton implements ButtonFactory{
 		this.meal = meal;
 		uf.addFactory(this);
 		mealSlotButton = new Button("empty");
+		write(c);
 		mealSlotButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				

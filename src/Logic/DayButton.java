@@ -16,7 +16,7 @@ public class DayButton implements ButtonFactory {
 		write(c);
 		dayButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				c.selectedDay = day;
+				c.selectedDay = c.getWeek().getDay(dayOfWeek -1);
 				uf.update(c);
 			} 
 		});

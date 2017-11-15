@@ -23,7 +23,9 @@ public class DayButton implements ButtonFactory {
 	}
 	public void write(MyCalendar c){
 		Calendar day = c.getWeek().getDay(dayOfWeek -1);
-		dayButton.setText("" + day.get(Calendar.DAY_OF_MONTH));
+		String buttonText = CalendarUtil.numWeekToString(day.get(Calendar.DAY_OF_WEEK)-1);
+		buttonText += ("\n" + day.get(Calendar.DAY_OF_MONTH));
+		dayButton.setText(buttonText);
 		if (CalendarUtil.compareDates(c.currentDay, c.selectedDay) && c.selectedDay.equals(day)){
 			dayButton.setStyle("-fx-background-color:#ff00ff");
 		}

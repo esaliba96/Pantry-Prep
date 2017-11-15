@@ -51,6 +51,18 @@ public class CalendarUtil {
 		}
 		return "error";
 	}
+	public static String numWeekToString(int num){
+		switch (num){
+			case 0: return "Sunday";
+			case 1: return "Monday";
+			case 2: return "Tuesday";
+			case 3: return "Wednesday";
+			case 4: return "Thursday";
+			case 5: return "Friday";
+			case 6: return "Saturday";
+		}
+		return "error";
+	}
 	//returns whether two different Calendars share the same date ignoring the time
 	public static boolean compareDates(Calendar a,Calendar b){
 		if (a.get(Calendar.DAY_OF_MONTH) != b.get(Calendar.DAY_OF_MONTH)){

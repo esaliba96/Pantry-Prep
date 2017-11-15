@@ -3,6 +3,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class CalendarUtil {
+	//returns the date of the date c + the offset 
 	public static Calendar getOffsetDate(Calendar c, int offSet){
 		int year = c.get(Calendar.YEAR);
 		int month = c.get(Calendar.MONTH);
@@ -27,10 +28,12 @@ public class CalendarUtil {
 		Calendar myCal = new GregorianCalendar(year,month,dayOfMonth);
 		return myCal;
 	}
+	//gets the days of the month in the given year and month
 	private static int getDaysInMonth(int year,int month){
 		Calendar myCal = new GregorianCalendar(year,month,1);
 		return myCal.getActualMaximum(myCal.DAY_OF_MONTH);
 	}
+	//returns the month of the given number
 	public static String numMonthToString(int num){
 		switch(num){
 			case 0: return "January";
@@ -48,6 +51,7 @@ public class CalendarUtil {
 		}
 		return "error";
 	}
+	//returns whether two different Calendars share the same date ignoring the time
 	public static boolean compareDates(Calendar a,Calendar b){
 		if (a.get(Calendar.DAY_OF_MONTH) != b.get(Calendar.DAY_OF_MONTH)){
 			return false;
@@ -61,3 +65,4 @@ public class CalendarUtil {
 		return true;
 	}
 }
+ 

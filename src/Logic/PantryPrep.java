@@ -1,5 +1,6 @@
 package Logic;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -45,5 +46,15 @@ public class PantryPrep extends Application{
 		stage.setScene(weeklyViewScene);
 		
 		stage.show();
+		
+        /*
+        //Code to show the add ingredient page.
+		ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
+		ArrayList<String> instructions = new ArrayList<String>();
+		Recipe recipe = new Recipe("recipe name", "Your recipe description.", ingredients, instructions);
+		stage.setTitle("PantryPrepXX");
+		stage.setScene(AddIngredientScene.getScene(recipe));
+		stage.show();
+         */
 	}
 }

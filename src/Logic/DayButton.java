@@ -16,15 +16,17 @@ public class DayButton implements ButtonFactory {
 		write(c);
 		dayButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				c.selectedDay = day;
+				c.selectedDay = c.getWeek().getDay(dayOfWeek -1);
 				uf.update(c);
 			} 
 		});
 	}
 	public void write(MyCalendar c){
 		Calendar day = c.getWeek().getDay(dayOfWeek -1);
-		dayButton.setText("" + day.get(Calendar.DAY_OF_MONTH));
-		if (CalendarUtil.compareDates(c.currentDay, c.selectedDay) && c.selectedDay.equals(day)){
+		String buttonText = CalendarUtil.numWeekToString(day.get(Calendar.DAY_OF_WEEK)-1);
+		buttonText += ("\n" + day.get(Calendar.DAY_OF_MONTH));
+		dayButton.setText(buttonText);
+		if (CalendarUtil.compareDates(c.currentDay, c.selectedDay) && CalendarUtil.compareDates(c.selectedDay,day)){
 			dayButton.setStyle("-fx-background-color:#ff00ff");
 		}
 		else if (c.selectedDay.equals(day)){

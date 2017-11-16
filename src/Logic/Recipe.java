@@ -2,15 +2,15 @@ package Logic;
 
 import java.util.*;
 
-public class Recipe{
+public class Recipe
+{
    private ArrayList<Ingredient> ingredientList;
    private String description;
    private String name;
    private ArrayList<String> instructionList;
 
-   public Recipe(String name, String description, 
-      ArrayList<Ingredient> ingredientList, ArrayList<String> instructionList){
-
+   public Recipe(String name, String description, ArrayList<Ingredient> ingredientList, ArrayList<String> instructionList)
+   {
          this.name = name;
          this.description = description;
          this.ingredientList = ingredientList;

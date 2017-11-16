@@ -1,18 +1,27 @@
 package Logic;
 
 public class Ingredient{
-   private String name;
-   private String amount;
-
-   public Ingredient(String name, String amount){
-      this.name = name;
-      this.amount = amount;
-   }
-
-   public String getAmount(){
-      return amount; 
-   }
-   public String getName(){
-      return name;
-   }
+	private int quantity;
+	private String unit;
+	private String ingredientName;
+	
+	public Ingredient(int quantity, String unit, String ingredientName)
+	{
+		this.quantity = quantity;
+	    this.unit = unit;
+	    this.ingredientName = ingredientName;
+	}
+	
+	public int getQuantity()
+	{
+		return quantity; 
+	}
+	public String getUnit()
+	{
+		return unit;
+	}
+	public String getIngredientName()
+	{
+		return ingredientName;
+	}
 }

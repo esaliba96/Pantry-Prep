@@ -32,4 +32,9 @@ public class Recipe{
    public ArrayList<Ingredient> getIngredientList(){
       return ingredientList;
    }
+   
+   public void addIngredient(String name, String amount){
+	   Ingredient addme = new Ingredient(name, amount);
+	   ingredientList.add(addme);
+   }
 }

@@ -16,15 +16,15 @@ public class MonthLabel implements ButtonFactory{
 		Calendar Saturday = c.getWeek().getDay(DayOfWeek.SATURDAY);
 		int SundayMonth = Sunday.get(Calendar.MONTH);
 		int SaturdayMonth = Saturday.get(Calendar.MONTH);
+		String myMonthString = "";
 		if (SaturdayMonth == SundayMonth){
-			monthLabel.setText(CalendarUtil.numMonthToString(SaturdayMonth));
+			myMonthString = CalendarUtil.numMonthToString(SaturdayMonth);
 		}
 		else{
-			String myMonthString = "";
 			myMonthString += CalendarUtil.numMonthToString(SundayMonth);
 			myMonthString += " / ";
 			myMonthString += CalendarUtil.numMonthToString(SaturdayMonth);
-			monthLabel.setText(myMonthString);
 		}
+		monthLabel.setText(myMonthString);
 	}
 }

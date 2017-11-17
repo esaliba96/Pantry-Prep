@@ -23,32 +23,6 @@ public class WeeklyViewScene {
 		VBox root = new VBox();
 		root.getChildren().add(NavigationBar.getNavigateBox());
 		//Creates and adds Month to Vbox
-		MonthLabel monthLabel = new MonthLabel(c,uf);
-		root.getChildren().add(monthLabel.monthLabel);
-		//Hbox creates a horizontal row
-		HBox dayLayer = new HBox();
-		//Add arrow buttons and calendar days to Hbox
-		dayLayer.getChildren().add(new SwitchWeeksButton(-1,c,"<-",uf).switchButton);
-		for (int i = 0; i < 7; i++){
-			DayButton dayB = new DayButton(c.getWeek().getDay(i),c,uf);
-			dayLayer.getChildren().add(dayB.dayButton);
-		}
-		dayLayer.getChildren().add(new SwitchWeeksButton(1,c,"->",uf).switchButton);
-		//Adds Hbox to Vbox
-		root.getChildren().add(dayLayer);
-		//Add root Vbox to the center of the Border Pane
-		//border.setCenter(weekDisplay);
-		
-		//Set screen size?
-		//return new Scene(weekDisplay,400,400);
-
-		//root.getChildren().add(dayLayer);
-		HBox recipeLayer = new HBox();
-		VBox mealSlots = new VBox();
-		for (int i = 0; i < 3; i++){
-			MealSlotButton msb = new MealSlotButton(c,uf,i);
-			mealSlots.getChildren().add(msb.mealSlotButton);
-		}
 		//For display testing. Delete later
 		//====================================================
 		ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
@@ -56,6 +30,7 @@ public class WeeklyViewScene {
 		Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
 		Ingredient i2 = new Ingredient(2, "", "Eggs");
 		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
+		ArrayList<MealSlotButton> meals = new ArrayList<>();
 		ArrayList<String> sList = new ArrayList<String>();
 		sList.add("Step 1");
 		sList.add("Step 2");
@@ -72,20 +47,44 @@ public class WeeklyViewScene {
 		sList1.add("Step 3");
 		iList1.add(i1);
 		iList1.add(i2);
-		
-		Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs recipe", 
-				iList, sList);
-		
-		Recipe r2 = new Recipe("Beef Corn", "Corn with beeff", 
-				iList1, sList1);
-		
+
+		Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs recipe", iList, sList);
+
+		Recipe r2 = new Recipe("Beef Corn", "Corn with beeff", iList1, sList1);
+
 		recipeList.add(r1);
 		recipeList.add(r2);
 		//====================================================
+
+		MonthLabel monthLabel = new MonthLabel(c,uf);
+		root.getChildren().add(monthLabel.monthLabel);
+		//Hbox creates a horizontal row
+		HBox dayLayer = new HBox();
+		//Add arrow buttons and calendar days to Hbox
+		dayLayer.getChildren().add(new SwitchWeeksButton(-1,c,"<-",uf).switchButton);
+		for (int i = 0; i < 7; i++){
+			DayButton dayB = new DayButton(c.getWeek().getDay(i),c,uf);
+			dayLayer.getChildren().add(dayB.dayButton);
+		}
+		dayLayer.getChildren().add(new SwitchWeeksButton(1,c,"->",uf).switchButton);
+		//Adds Hbox to Vbox
+		root.getChildren().add(dayLayer);
+
+		VBox recipeLayer = new VBox();
+		VBox mealSlots = new VBox();
+		for (int i = 0; i < 3; i++)
+		{
+			MealSlotButton msb = new MealSlotButton(c,uf,i);
+			mealSlots.getChildren().add(msb.mealSlotButton);
+			RecipeScrollPane rsp = new RecipeScrollPane(recipeList, msb);
+			if(i == 2)
+				recipeLayer.getChildren().add(rsp.sp);
+			meals.add(msb);
+		}	
+		root.getChildren().addAll(mealSlots, recipeLayer);
 		
-		RecipeScrollPane rsp = new RecipeScrollPane(recipeList);
-		recipeLayer.getChildren().addAll(mealSlots,rsp.sp);
-		root.getChildren().add(recipeLayer);
 		return new Scene(root,400,400);
 	}
 }
+
+

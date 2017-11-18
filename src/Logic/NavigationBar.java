@@ -10,19 +10,21 @@ import java.util.Calendar;
 public class NavigationBar {
 	
 	static HBox navigate;
-	static Button menuButton, calendarButton, createRecipeButton, exitButton;
+	static Button menuButton, calendarButton, createRecipeButton, exitButton, printButton;
 	
 	public static void main (MyCalendar myCal, Stage stage)
 	{
 		menuButton = new Button("Menu");
 		calendarButton = new Button("Calendar");
 		createRecipeButton = new Button("Create Recipe");
+		printButton = new Button("Print Shopping List");
 		exitButton = new Button("Exit");
 		navigate = new HBox(8);
-		navigate.getChildren().addAll(menuButton, calendarButton, createRecipeButton, exitButton);
+		navigate.getChildren().addAll(menuButton, calendarButton, createRecipeButton, exitButton,printButton);
 		
 		//Define Actions for Buttons
 		menuButton.setOnAction(e-> ButtonClicked(stage, myCal, e));
+		printButton.setOnAction(e-> ButtonClicked(stage,myCal,e));
 		calendarButton.setOnAction(e-> ButtonClicked(stage, myCal, e));
         createRecipeButton.setOnAction(e-> ButtonClicked(stage, myCal, e));
 	}
@@ -32,6 +34,9 @@ public class NavigationBar {
         if (e.getSource()==createRecipeButton)
         {
             stage.setScene(AddRecipeScene.getScene(myCal));
+        }
+        else if (e.getSource() == printButton){
+        	stage.setScene(PrintScene.getScene(myCal));
         }
         else if(e.getSource()==menuButton)
         {

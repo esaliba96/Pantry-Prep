@@ -11,9 +11,11 @@ public class MyCalendar {
 	private LinkedList<Week> weeks;
 	public Calendar currentDay; 
 	public Calendar selectedDay;
+	public PrintInterval pi; 
 	private int index = 0;
 	public MyCalendar(Calendar currentDay){
 		Calendar c = Calendar.getInstance();
+		pi = new PrintInterval();
 		weeks = new LinkedList<Week>();
 		this.currentDay = currentDay;
 		this.selectedDay = currentDay;
@@ -21,6 +23,24 @@ public class MyCalendar {
 		System.out.println("year: " + c.get(Calendar.DAY_OF_YEAR));
 		System.out.println("dayOfWeek" + c.get(Calendar.DAY_OF_WEEK));
 		weeks.add(new Week(CalendarUtil.getOffsetDate(c,(c.get(Calendar.DAY_OF_WEEK) * -1) + 1)));
+	}
+	public void SetDay(int offset,boolean isPrev,boolean isEnd){
+		if (isEnd){
+			if (isPrev){
+				pi.setEnd(CalendarUtil.getOffsetDate(pi.getEnd(), -1));
+			}
+			else{
+				pi.setEnd(CalendarUtil.getOffsetDate(pi.getEnd(), 1));
+			}
+		}
+		else{
+			if (isPrev){
+				pi.setBeginning(CalendarUtil.getOffsetDate(pi.getBeginning(), -1));
+			}
+			else{
+				pi.setBeginning(CalendarUtil.getOffsetDate(pi.getBeginning(), 1));
+			}
+		}
 	}
 	public Week getWeek(){
 		System.out.println(index);

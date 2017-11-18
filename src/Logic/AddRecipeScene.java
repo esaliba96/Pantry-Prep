@@ -39,10 +39,11 @@ public class AddRecipeScene {
 	static int ingredientCount = 1;
 	static ArrayList<TextField> instructionTextFieldList;
 	static ArrayList<TextField> quantityTextFieldList;
-	static ArrayList<TextField> unitTextFieldList;
+	static ArrayList<ComboBox> unitComboBoxList;
 	static ArrayList<TextField> ingredientNameTextFieldList;
 	static ArrayList<Ingredient> ingredientList= new ArrayList<Ingredient>();
 	static ArrayList<String> instructionList = new ArrayList<String>();
+	static ObservableList<String> options;
 	
 	public static Scene getScene(MyCalendar c)
 	{	
@@ -79,7 +80,7 @@ public class AddRecipeScene {
 		HBox recipeTextFields = new HBox();
 		quantityTextField = new TextField ();
 		quantityTextField.setPromptText("Quantity");
-		ObservableList<String> options = FXCollections.observableArrayList(MeasurementUtil.getAllMeasurementNames());
+		options = FXCollections.observableArrayList(MeasurementUtil.getAllMeasurementNames());
 		unitComboBox = new ComboBox(options);
 		ingredientTextField = new TextField ();
 		ingredientTextField.setPromptText("Ingredient Name");
@@ -92,9 +93,10 @@ public class AddRecipeScene {
 		addIngredientButton.setOnAction(e-> ButtonClicked(e));
 		//Create TextField Arrays and add to them
 		quantityTextFieldList = new ArrayList<TextField>();
-		unitTextFieldList = new ArrayList<TextField>();
+		unitComboBoxList = new ArrayList<ComboBox>();
 		ingredientNameTextFieldList = new ArrayList<TextField>();
 		quantityTextFieldList.add(quantityTextField);
+		unitComboBoxList.add(unitComboBox);
 		ingredientNameTextFieldList.add(ingredientTextField);
 		
 		/***Recipe Directions Label and Text Field***/
@@ -130,17 +132,16 @@ public class AddRecipeScene {
 	        	HBox recipeTextFields = new HBox();
 	    		TextField quantityTextField = new TextField ();
 	    		quantityTextField.setPromptText("Quantity");
-	    		TextField unitTextField = new TextField ();
-	    		unitTextField.setPromptText("Unit");
+	    		unitComboBox = new ComboBox(options);
 	    		TextField ingredientTextField = new TextField ();
 	    		ingredientTextField.setPromptText("Ingredient Name");
 	    		//Add Ingredient text fields to HBox
-	    		recipeTextFields.getChildren().addAll(quantityTextField, unitTextField, ingredientTextField);
+	    		recipeTextFields.getChildren().addAll(quantityTextField, unitComboBox, ingredientTextField);
 	    		//Add to Ingredient section VBox
 	    		ingredientVbox.getChildren().addAll(recipeTextFields);
 	    		//Add text fields to lists
 	    		quantityTextFieldList.add(quantityTextField);
-	    		unitTextFieldList.add(unitTextField);
+	    		unitComboBoxList.add(unitComboBox);
 	    		ingredientNameTextFieldList.add(ingredientTextField);
         }
         else if(e.getSource() == addStepButton)
@@ -175,7 +176,7 @@ public class AddRecipeScene {
 	{
 		for(int i = 0; i <quantityTextFieldList.size(); i++)
 		{
-			if(nameTextField.getText().equals("") || quantityTextFieldList.get(i).getText().equals("") || unitTextFieldList.get(i).getText().equals("") || ingredientNameTextFieldList.get(i).getText().equals(""))
+			if(nameTextField.getText().equals("") || quantityTextFieldList.get(i).getText().equals("") || unitComboBoxList.get(i).getSelectionModel().isEmpty() || ingredientNameTextFieldList.get(i).getText().equals(""))
 			{
 				return false;
 			}
@@ -207,7 +208,8 @@ public class AddRecipeScene {
 	{
 		for(int i = 0; i <quantityTextFieldList.size(); i++)
 		{
-			ingredientList.add(getIngredient(Integer.parseInt(quantityTextFieldList.get(i).getText()), unitTextFieldList.get(i).getText(), ingredientNameTextFieldList.get(i).getText()));
+			System.out.println("*** " + unitComboBoxList.get(i).getValue().toString());
+			ingredientList.add(getIngredient(Integer.parseInt(quantityTextFieldList.get(i).getText()), unitComboBoxList.get(i).getValue().toString(), ingredientNameTextFieldList.get(i).getText()));
 		}
 		for(int i = 0; i<ingredientList.size(); i++)
 		{

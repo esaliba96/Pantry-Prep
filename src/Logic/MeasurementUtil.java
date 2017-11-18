@@ -4,11 +4,11 @@ public class MeasurementUtil {
 	public static String getMeasurementNames(Measurement m){
 		switch(m){
 		case CUP:
-			return "Cup";
+			return "Cup(s)";
 		case TEASPOON:
-			return "Teaspoon";
+			return "Teaspoon(s)";
 		case TABLESPOON:
-			return "Tablespoon";
+			return "Tablespoon(s)";
 		case INDIVIDUAL:
 			return "Individual";
 		}

@@ -1,0 +1,24 @@
+package Logic;
+
+public class MeasurementUtil {
+	public static String getMeasurementNames(Measurement m){
+		switch(m){
+		case CUP:
+			return "Cup";
+		case TEASPOON:
+			return "Teaspoon";
+		case TABLESPOON:
+			return "Tablespoon";
+		case INDIVIDUAL:
+			return "Individual";
+		}
+		return "error";
+	}
+	public static String[] getAllMeasurementNames(){
+		String[] names = new String[Measurement.values().length];
+		for (int i = 0; i < Measurement.values().length; i++){
+			names[i] = getMeasurementNames(Measurement.values()[i]); 
+		}
+		return names;
+	}
+}

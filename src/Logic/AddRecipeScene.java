@@ -5,6 +5,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -15,6 +16,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.layout.Priority;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,7 +33,8 @@ public class AddRecipeScene {
 	
 	static VBox nameSection, descriptionSection, ingredientVbox, directionVbox;
 	static Button addIngredientButton, addStepButton, addRecipe;
-	static TextField nameTextField, quantityTextField, unitTextField, ingredientTextField;
+	static TextField nameTextField, quantityTextField, ingredientTextField;
+	static ComboBox unitComboBox;
 	static int stepCount = 1;
 	static int ingredientCount = 1;
 	static ArrayList<TextField> instructionTextFieldList;
@@ -75,12 +79,12 @@ public class AddRecipeScene {
 		HBox recipeTextFields = new HBox();
 		quantityTextField = new TextField ();
 		quantityTextField.setPromptText("Quantity");
-		unitTextField = new TextField ();
-		unitTextField.setPromptText("Unit");
+		ObservableList<String> options = FXCollections.observableArrayList(MeasurementUtil.getAllMeasurementNames());
+		unitComboBox = new ComboBox(options);
 		ingredientTextField = new TextField ();
 		ingredientTextField.setPromptText("Ingredient Name");
 		//Add Ingredient text fields to HBox
-		recipeTextFields.getChildren().addAll(quantityTextField, unitTextField, ingredientTextField);
+		recipeTextFields.getChildren().addAll(quantityTextField, unitComboBox, ingredientTextField);
 		//Add to Ingredient section VBox
 		ingredientVbox.getChildren().addAll(ingredientLabel, recipeTextFields);
 		//Add More Ingredient Button and Action
@@ -91,7 +95,6 @@ public class AddRecipeScene {
 		unitTextFieldList = new ArrayList<TextField>();
 		ingredientNameTextFieldList = new ArrayList<TextField>();
 		quantityTextFieldList.add(quantityTextField);
-		unitTextFieldList.add(unitTextField);
 		ingredientNameTextFieldList.add(ingredientTextField);
 		
 		/***Recipe Directions Label and Text Field***/

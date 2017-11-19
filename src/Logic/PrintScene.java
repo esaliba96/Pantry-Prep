@@ -1,6 +1,9 @@
 package Logic;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -8,13 +11,37 @@ public class PrintScene {
 	public static Scene getScene(MyCalendar c){
 		UpdateFrame uf = new UpdateFrame();
 		HBox switchDayLayer = new HBox();
-		SwitchDayButton begPrev = new SwitchDayButton(-1,true,false,"<-",uf,c);
+		Button begPrev = new Button("<-");
+		begPrev.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				c.pi.beginningPrev();
+				uf.update(c);
+			}
+		});
+		Button begNext = new Button("->");
+		begNext.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				c.pi.beginningNext();
+				uf.update(c);
+			}
+		});
+		Button endPrev = new Button("<-");
+		endPrev.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				c.pi.endPrev();;
+				uf.update(c);
+			}
+		});
+		Button endNext = new Button("->");
+		endNext.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				c.pi.endNext();;
+				uf.update(c);
+			}
+		});
 		DayViewLabel begDayView = new DayViewLabel(uf,c,false);
-		SwitchDayButton begNext = new SwitchDayButton(1,false,false,"->",uf,c);
-		SwitchDayButton endPrev = new SwitchDayButton(-11,true,true,"<-",uf,c);
 		DayViewLabel endDayView = new DayViewLabel(uf,c,true);
-		SwitchDayButton endNext = new SwitchDayButton(1,false,true,"->",uf,c);
-		switchDayLayer.getChildren().addAll(begPrev.switchButton,begDayView.dayView,begNext.switchButton,endPrev.switchButton,endDayView.dayView,endNext.switchButton);
+		switchDayLayer.getChildren().addAll(begPrev,begDayView.dayView,begNext,endPrev,endDayView.dayView,endNext);
 		VBox root = new VBox();
 		root.getChildren().add(switchDayLayer);
 		return new Scene(root,400,400);

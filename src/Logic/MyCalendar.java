@@ -13,6 +13,7 @@ public class MyCalendar {
 	public Calendar selectedDay;
 	public PrintInterval pi; 
 	private int index = 0;
+	private int currentDayIndex = 0;
 	public MyCalendar(Calendar currentDay){
 		Calendar c = Calendar.getInstance();
 		pi = new PrintInterval();
@@ -39,9 +40,15 @@ public class MyCalendar {
 		if (index == 0){
 			Calendar prevSunday = CalendarUtil.getOffsetDate(weeks.get(index).getDay(DayOfWeek.SUNDAY),-7);
 			weeks.addFirst(new Week(prevSunday));
+			currentDayIndex++;
 		}
 		else{
 			index--;
 		}
+	}
+	public Day getOffsetDay(int offset){
+		int offsetWeekday = (currentDay.get(Calendar.DAY_OF_WEEK) - 1) + offset;
+		Week w = weeks.get(currentDayIndex + (int)Math.floor(offsetWeekday / 7.0));
+		return w.getDayRecipes(offsetWeekday % 7);
 	}
 }

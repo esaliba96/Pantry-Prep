@@ -31,7 +31,9 @@ public class PantryPrep extends Application{
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		    	
+		
+		Database.loadRecipes();
+		Database.loadPlanner();
 		currentDay = Calendar.getInstance();
 		myCal = new MyCalendar(currentDay);
 		

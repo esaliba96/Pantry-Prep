@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -15,6 +16,53 @@ import java.util.Set;
 public class Database {
 	private static HashMap<String, Recipe> recipes = new HashMap<String, Recipe>();
 	private static HashMap<String, Day> planner = new HashMap<String, Day>();
+	
+	public static boolean recipeExists(String name) {
+		return recipes.containsKey(name);
+	}
+	
+	public static ArrayList<Recipe> getRecipeList() {
+		ArrayList<Recipe> list = new ArrayList<Recipe>();
+		for (Recipe r : recipes.values()) {
+			list.add(r);
+		}
+		return list;
+	}
+	
+	public static Recipe getRecipeFromList(String name) {
+		return recipes.get(name);
+	}
+	
+	public static Day getMealsFromPlanner(Calendar cal) {
+		StringBuilder sb = new StringBuilder(getMonthAsString(cal));
+		sb.append(getDateAsString(cal));
+		sb.append(cal.get(Calendar.YEAR));
+		String key = sb.toString();
+		
+		if (!planner.containsKey(key)) {
+			return null;
+		}
+		
+		Day day = planner.get(key);
+		return day;
+	}
+	
+	public static void saveRecipeToList(Recipe r) {
+		String name = r.getName();
+		if (recipeExists(name)) {
+			System.err.println("Error: Duplicate recipe name: " + name);
+			System.exit(1);
+		}
+		recipes.put(name, r);
+	}
+	
+	public static void saveMealsToPlanner(Calendar cal, Day day) {
+		StringBuilder sb = new StringBuilder(getMonthAsString(cal));
+		sb.append(getDateAsString(cal));
+		sb.append(cal.get(Calendar.YEAR));
+		String key = sb.toString();
+		planner.put(key, day);
+	}
 
 	/**
 	 * Loads master list of all recipes.
@@ -25,7 +73,7 @@ public class Database {
 	 * 
 	 * @throws IOException
 	 */
-	public static void loadRecipes() throws IOException {
+	public static void readRecipesFromFile() throws IOException {
 		File f = new File("pp_recipes.txt");
 		
 		if (!f.exists()) {
@@ -65,7 +113,9 @@ public class Database {
 		in.close();
 	}
 	
-	public static void saveRecipe(Recipe r) throws IOException {
+	
+	
+	public static void writeRecipeListToFile(Recipe r) throws IOException {
 		File f = new File("pp_recipes.txt");
 		FileWriter fw = new FileWriter(f, true);
 		BufferedWriter bw = new BufferedWriter(fw);
@@ -108,7 +158,7 @@ public class Database {
 	 * 
 	 * @throws IOException
 	 */
-	public static void loadPlanner() throws IOException {
+	public static void readPlannerFromFile() throws IOException {
 		File f = new File("pp_planner.txt");
 		
 		if (!f.exists()) {
@@ -129,7 +179,7 @@ public class Database {
 		in.close();
 	}
 	
-	public static void savePlanner() throws IOException {
+	public static void writePlannerToFile() throws IOException {
 		File f = new File("pp_planner.txt");
 		FileWriter fw = new FileWriter(f);
 		BufferedWriter bw = new BufferedWriter(fw);
@@ -138,42 +188,12 @@ public class Database {
 		for (String key : planner.keySet()) {
 			Day day = planner.get(key);
 			out.println(key);
-			out.println(day.getRecipe(0));
-			out.println(day.getRecipe(1));
-			out.println(day.getRecipe(2));
+			out.println(getLineFromRecipe(day.getRecipe(0)));
+			out.println(getLineFromRecipe(day.getRecipe(1)));
+			out.println(getLineFromRecipe(day.getRecipe(2)));
 		}
 
 		out.close();
-	}
-
-	public static boolean recipeExists(String name) {
-		return recipes.containsKey(name);
-	}
-	
-	public static Recipe getRecipe(String name) {
-		return recipes.get(name);
-	}
-	
-	public static Day getDayMeals(Calendar cal) {
-		StringBuilder sb = new StringBuilder(getMonthAsString(cal));
-		sb.append(getDateAsString(cal));
-		sb.append(cal.get(Calendar.YEAR));
-		String key = sb.toString();
-		
-		if (!planner.containsKey(key)) {
-			return null;
-		}
-		
-		Day day = planner.get(key);
-		return day;
-	}
-	
-	public static void setDayMeals(Calendar cal, Day day) {
-		StringBuilder sb = new StringBuilder(getMonthAsString(cal));
-		sb.append(getDateAsString(cal));
-		sb.append(cal.get(Calendar.YEAR));
-		String key = sb.toString();
-		planner.put(key, day);
 	}
 	
 	private static String getMonthAsString(Calendar cal) {
@@ -208,6 +228,14 @@ public class Database {
 			System.exit(1);
 		}
 		
-		return getRecipe(name);
+		return getRecipeFromList(name);
+	}
+	
+	private static String getLineFromRecipe(Recipe r) {
+		if (r == null) { 
+			return null;
+		}
+		
+		return "#" + r.getName();
 	}
 }

@@ -27,7 +27,7 @@ public class MealSlotButton implements ButtonFactory{
 	
 	public void write(MyCalendar c) {
 		int dayOfWeek = c.selectedDay.get(Calendar.DAY_OF_WEEK);
-		Day day = Database.getDayMeals(c.selectedDay);
+		Day day = Database.getMealsFromPlanner(c.selectedDay);
 		
 		if (day == null) {
 			mealSlotButton.setText("Unplanned");

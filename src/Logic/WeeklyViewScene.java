@@ -6,6 +6,7 @@ import java.util.Calendar;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import javafx.application.Application;
@@ -21,10 +22,11 @@ public class WeeklyViewScene extends Scene {
 	private UpdateFrame uf;
 	private MyCalendar c;
 	
+	// GUI elements
 	private MonthLabel monthLabel;
-	private ArrayList<Recipe> dummyRecipes;
 	private SwitchWeeksButton prevWeek, nextWeek;
 	
+	private ArrayList<Recipe> recipeList;
 	private MealSlotButton[] meals;
 
 	public WeeklyViewScene(MyCalendar myCal) {
@@ -55,31 +57,37 @@ public class WeeklyViewScene extends Scene {
 		root.getChildren().add(dayLayer);
 
 		// Meal Slots and Recipe List
-		dummyRecipes = getDummyRecipeList();
+		recipeList = Database.getRecipeList();
 		meals = new MealSlotButton[3];
+		Region spacer1 = new Region();
+		Region spacer2 = new Region();
+		spacer1.setMinHeight(30);
+		spacer2.setMinHeight(30);
+		Label recipeListLabel = new Label("Recipe List");
 		VBox recipeLayer = new VBox();
 		VBox mealSlots = new VBox();
 		for (int i = 0; i < 3; i++) {
 			MealSlotButton msb = new MealSlotButton(c, uf, i);
 			mealSlots.getChildren().add(msb.mealSlotButton);
-			RecipeScrollPane rsp = new RecipeScrollPane(dummyRecipes, msb);
+			RecipeScrollPane rsp = new RecipeScrollPane(recipeList, msb);
 			if (i == 2)
 				recipeLayer.getChildren().add(rsp.sp);
 			meals[i] = msb;
 		}
-		root.getChildren().addAll(mealSlots, recipeLayer);
+		root.getChildren().addAll(spacer1, mealSlots, spacer2, recipeListLabel, recipeLayer);
 
 		// Save Button
 		Button saveButton = new Button("Save");
 		saveButton.setOnAction(e -> {
 			Day day = new Day();
 			for (MealSlotButton msb : meals) {
-				String recipeName = msb.mealSlotButton.toString();
-				day.setRecipe(msb.getMeal(), Database.getRecipe(recipeName));
+				String recipeName = msb.mealSlotButton.getText();
+				day.setRecipe(msb.getMeal(), Database.getRecipeFromList(recipeName));
 			}
-			Database.setDayMeals(c.selectedDay, day);
+			Database.saveMealsToPlanner(c.selectedDay, day);
 			try {
-				Database.savePlanner();
+				Database.writePlannerToFile();
+				System.err.println("Saved");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

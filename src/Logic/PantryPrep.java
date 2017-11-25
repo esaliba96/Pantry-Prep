@@ -32,8 +32,8 @@ public class PantryPrep extends Application{
 	public void start(Stage stage) throws Exception {
 		
 		/* Load saved data, if any */
-		Database.loadRecipes();
-		Database.loadPlanner();
+		Database.readRecipesFromFile();
+		Database.readPlannerFromFile();
 		
 		myCal = new MyCalendar(Calendar.getInstance());
 		
@@ -46,8 +46,8 @@ public class PantryPrep extends Application{
 		weeklyViewScene = new WeeklyViewScene(myCal);
 		
 		stage.setScene(weeklyViewScene);
-		stage.setWidth(600);
-		stage.setHeight(400);
+		stage.setWidth(575);
+		stage.setHeight(600);
 		
 		stage.show();
 		

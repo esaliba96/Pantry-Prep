@@ -66,7 +66,7 @@ public class PrintInterval {
 		File f = new File("shopping_list.txt");
 		FileWriter fw;
 		try {
-			fw = new FileWriter(f, true);
+			fw = new FileWriter(f, false);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter out = new PrintWriter(bw);
 			String listTitle = "Shopping list from ";
@@ -91,12 +91,17 @@ public class PrintInterval {
 	}
 	private void addToIngredients(Recipe r){
 		for (Ingredient i : r.getIngredientList()){
+			boolean found = false;
 			for (Ingredient j : myIngredients){
 				if (i.getIngredientName().equalsIgnoreCase(j.getIngredientName())){
 					if (i.getUnit().equals(j.getIngredientName())){
 						j.addToQuantity(i.getQuantity());
+						found = true;
 					}
 				}
+			}
+			if (!found && i != null){
+				myIngredients.add(i);
 			}
 		}
 	}

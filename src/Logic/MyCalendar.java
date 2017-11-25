@@ -20,13 +20,9 @@ public class MyCalendar {
 		weeks = new LinkedList<Week>();
 		this.currentDay = currentDay;
 		this.selectedDay = currentDay;
-		System.out.println("dayOfYear: " + c.get(Calendar.DAY_OF_YEAR));
-		System.out.println("year: " + c.get(Calendar.DAY_OF_YEAR));
-		System.out.println("dayOfWeek" + c.get(Calendar.DAY_OF_WEEK));
 		weeks.add(new Week(CalendarUtil.getOffsetDate(c,(c.get(Calendar.DAY_OF_WEEK) * -1) + 1)));
 	}
 	public Week getWeek(){
-		System.out.println(index);
 		return weeks.get(index);
 	}
 	public void nextWeek(){
@@ -48,7 +44,6 @@ public class MyCalendar {
 	}
 	public Day getOffsetDay(int offset){
 		int offsetWeekday = (currentDay.get(Calendar.DAY_OF_WEEK) - 1) + offset;
-		System.out.println("offsetWeekday = " + offsetWeekday);
 		int weekIndex = currentDayIndex + (int)Math.floor(offsetWeekday / 7.0);
 		if (weekIndex >= weeks.size() || weekIndex < 0){
 			return null;

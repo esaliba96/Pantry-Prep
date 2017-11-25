@@ -11,6 +11,8 @@ public class MeasurementUtil {
 			return "Tablespoon(s)";
 		case INDIVIDUAL:
 			return "Individual";
+		case POUND:
+			return "Pound(s)";
 		}
 		return "error";
 	}

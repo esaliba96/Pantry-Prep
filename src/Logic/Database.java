@@ -168,6 +168,14 @@ public class Database {
 		return day;
 	}
 	
+	public static void setDayMeals(Calendar cal, Day day) {
+		StringBuilder sb = new StringBuilder(getMonthAsString(cal));
+		sb.append(getDateAsString(cal));
+		sb.append(cal.get(Calendar.YEAR));
+		String key = sb.toString();
+		planner.put(key, day);
+	}
+	
 	private static String getMonthAsString(Calendar cal) {
 		int month = cal.get(Calendar.MONTH) + 1;
 		

@@ -44,7 +44,7 @@ public class NavigationBar {
         }
         else if(e.getSource()==calendarButton)
         {
-        		stage.setScene(WeeklyViewScene.getScene(myCal));
+        		stage.setScene(new WeeklyViewScene(myCal));
         }
     }
 	

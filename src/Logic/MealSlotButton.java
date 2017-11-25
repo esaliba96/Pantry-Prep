@@ -24,6 +24,7 @@ public class MealSlotButton implements ButtonFactory{
 		mealSlotButton = new Text();
 		write(c);
 	}
+	
 	public void write(MyCalendar c) {
 		int dayOfWeek = c.selectedDay.get(Calendar.DAY_OF_WEEK);
 		Day day = Database.getDayMeals(c.selectedDay);
@@ -39,6 +40,10 @@ public class MealSlotButton implements ButtonFactory{
 		} else {
 			mealSlotButton.setText(recipe.getName());
 		}
+	}
+	
+	public int getMeal() {
+		return this.meal;
 	}
 
 }

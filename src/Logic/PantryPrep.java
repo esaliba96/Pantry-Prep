@@ -20,10 +20,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.layout.Priority;
 
 public class PantryPrep extends Application{
-	Calendar currentDay;
-	MyCalendar myCal;
-	BorderPane border;
-	Scene menuScene, addRecipeScene, weeklyViewScene;
+	private MyCalendar myCal;
+	private BorderPane border;
+	private Scene menuScene, addRecipeScene, weeklyViewScene;
 			
 	public static void main(String[] args) {		
 		launch(args);
@@ -32,10 +31,11 @@ public class PantryPrep extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 		
+		/* Load saved data, if any */
 		Database.loadRecipes();
 		Database.loadPlanner();
-		currentDay = Calendar.getInstance();
-		myCal = new MyCalendar(currentDay);
+		
+		myCal = new MyCalendar(Calendar.getInstance());
 		
 		//Application Title
 		stage.setTitle("PantryPrep");	
@@ -43,9 +43,11 @@ public class PantryPrep extends Application{
 		NavigationBar.main(myCal, stage);
 		menuScene = MenuScene.getScene(myCal);
 		addRecipeScene = AddRecipeScene.getScene(myCal);
-		weeklyViewScene = WeeklyViewScene.getScene(myCal);
+		weeklyViewScene = new WeeklyViewScene(myCal);
 		
 		stage.setScene(weeklyViewScene);
+		stage.setWidth(600);
+		stage.setHeight(400);
 		
 		stage.show();
 		

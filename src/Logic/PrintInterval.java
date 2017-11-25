@@ -15,6 +15,7 @@ public class PrintInterval {
 	private int endOffset;
 	private ArrayList<Ingredient> myIngredients;
 	public PrintInterval(){
+		myIngredients = new ArrayList<Ingredient>();
 		beginning = Calendar.getInstance();
 		end = Calendar.getInstance();
 		begOffset = 0;
@@ -66,11 +67,18 @@ public class PrintInterval {
 			fw = new FileWriter(f, true);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter out = new PrintWriter(bw);
+			String listTitle = "Shopping list from ";
+			listTitle += CalendarUtil.numMonthToString(beginning.get(Calendar.MONTH));
+			listTitle += (" " + beginning.get(Calendar.DAY_OF_MONTH) + " to ");
+			listTitle += CalendarUtil.numMonthToString(end.get(Calendar.MONTH));
+			listTitle += (" " + end.get(Calendar.DAY_OF_MONTH));
+			System.out.println(listTitle);
+			out.println(listTitle);
 			for (Recipe r : myList){
 				addToIngredients(r);
 			}
 			for (Ingredient i : myIngredients){
-				out.printf("%s %d %s",i.getIngredientName(),i.getQuantity(),i.getUnit());
+				out.printf("%s %d %s\n",i.getIngredientName(),i.getQuantity(),i.getUnit());
 			}
 			out.close();
 		} catch (IOException e) {

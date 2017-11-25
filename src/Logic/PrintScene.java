@@ -41,6 +41,12 @@ public class PrintScene {
 		});
 		DayViewLabel begDayView = new DayViewLabel(uf,c,false);
 		DayViewLabel endDayView = new DayViewLabel(uf,c,true);
+		Button printButton = new Button("Print");
+		printButton.setOnAction(new EventHandler<ActionEvent>(){
+			public void handle(ActionEvent event){
+				c.pi.getRecipes(c);
+			}
+		});
 		switchDayLayer.getChildren().addAll(begPrev,begDayView.dayView,begNext,endPrev,endDayView.dayView,endNext);
 		VBox root = new VBox();
 		root.getChildren().add(switchDayLayer);

@@ -48,7 +48,12 @@ public class MyCalendar {
 	}
 	public Day getOffsetDay(int offset){
 		int offsetWeekday = (currentDay.get(Calendar.DAY_OF_WEEK) - 1) + offset;
-		Week w = weeks.get(currentDayIndex + (int)Math.floor(offsetWeekday / 7.0));
+		System.out.println("offsetWeekday = " + offsetWeekday);
+		int weekIndex = currentDayIndex + (int)Math.floor(offsetWeekday / 7.0);
+		if (weekIndex >= weeks.size() || weekIndex < 0){
+			return null;
+		}
+		Week w = weeks.get(weekIndex);
 		return w.getDayRecipes(offsetWeekday % 7);
 	}
 }

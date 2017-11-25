@@ -47,9 +47,11 @@ public class PrintInterval {
 		ArrayList<Recipe> myList = new ArrayList<Recipe>();
 		for (int i = 0; i <= (endOffset - begOffset);i++){
 			Day d = c.getOffsetDay(begOffset + i);
-			for (int j = 0; j < 3; j++){
-				if (d.getRecipe(j) != null){
-					myList.add(d.getRecipe(j));
+			if (d != null){
+				for (int j = 0; j < 3; j++){
+					if (d.getRecipe(j) != null){
+						myList.add(d.getRecipe(j));
+					}
 				}
 			}
 		}	

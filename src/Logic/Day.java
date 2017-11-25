@@ -12,7 +12,6 @@ public class Day {
 			System.err.println("Meal index out of bounds: " + i);
 			System.exit(1);
 		}
-		
 		meals[i] = r;
 	}
 

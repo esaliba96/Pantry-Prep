@@ -44,12 +44,13 @@ public class PrintScene {
 		Button printButton = new Button("Print");
 		printButton.setOnAction(new EventHandler<ActionEvent>(){
 			public void handle(ActionEvent event){
-				c.pi.getRecipes(c);
+				c.pi.printRecipes(c);
 			}
 		});
 		switchDayLayer.getChildren().addAll(begPrev,begDayView.dayView,begNext,endPrev,endDayView.dayView,endNext);
 		VBox root = new VBox();
 		root.getChildren().add(switchDayLayer);
+		root.getChildren().add(printButton);
 		return new Scene(root,400,400);
 	}
 }

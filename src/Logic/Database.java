@@ -8,7 +8,9 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Database {
 	private static HashMap<String, Recipe> recipes = new HashMap<String, Recipe>();
@@ -125,6 +127,23 @@ public class Database {
 		}
 
 		in.close();
+	}
+	
+	public static void savePlanner() throws IOException {
+		File f = new File("pp_planner.txt");
+		FileWriter fw = new FileWriter(f);
+		BufferedWriter bw = new BufferedWriter(fw);
+		PrintWriter out = new PrintWriter(bw);
+
+		for (String key : planner.keySet()) {
+			Day day = planner.get(key);
+			out.println(key);
+			out.println(day.getRecipe(0));
+			out.println(day.getRecipe(1));
+			out.println(day.getRecipe(2));
+		}
+
+		out.close();
 	}
 
 	public static boolean recipeExists(String name) {

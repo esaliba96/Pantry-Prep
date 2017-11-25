@@ -83,6 +83,13 @@ public class WeeklyViewScene {
 		}	
 		root.getChildren().addAll(mealSlots, recipeLayer);
 		
+		Button saveButton = new Button("Save");
+		saveButton.setOnAction(e -> {
+			
+		});
+		
+		root.getChildren().add(saveButton);
+		
 		return new Scene(root,400,400);
 	}
 }

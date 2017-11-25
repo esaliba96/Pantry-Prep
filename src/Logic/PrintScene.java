@@ -60,6 +60,7 @@ public class PrintScene {
 		endButtonBox.getChildren().addAll(endPrev,endDayView.dayView,endNext);
 		switchDayLayer.getChildren().addAll(begBox,endBox);
 		VBox root = new VBox();
+		root.getChildren().add(NavigationBar.getNavigateBox());
 		root.getChildren().add(new Label("Print Shopping List"));
 		root.getChildren().add(switchDayLayer);
 		root.getChildren().add(printButton);

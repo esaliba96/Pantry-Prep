@@ -14,3 +14,59 @@ m&ms
 Cup(s)
 1
 eat m&ms
+Banana Bread
+Bread with bananans.
+6
+2
+bananas
+Individual
+5
+flour
+Cup(s)
+3
+brown sugar
+Cup(s)
+2
+butter
+Tablespoon(s)
+8
+baking soda
+Teaspoon(s)
+1
+chocolate chips
+Cup(s)
+1
+Combine all ingriedients in a large bowl.
+Pour in pan and bake in over at 400 degrees for 50 minutes.  
+testing recipe
+8
+1
+1
+dog
+Cup(s)
+1
+yes
+Corn
+Yellow corn
+1
+1
+sweet corn
+Cup(s)
+1
+Boil for 2 minutes in water.
+1
+2
+1
+1
+four
+Cup(s)
+3
+five
+Food
+Yummy!
+1
+1
+sauce
+Cup(s)
+1
+eat the sauce

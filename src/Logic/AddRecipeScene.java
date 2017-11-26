@@ -29,10 +29,13 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.stage.Stage;
 import javafx.application.Application;
+import javafx.scene.paint.Color;
+
 
 public class AddRecipeScene {
 
-	static VBox nameSection, descriptionSection, ingredientVbox, directionVbox;
+	static VBox vertDisplay, nameSection, descriptionSection, ingredientVbox, directionVbox;
+	static HBox addRecipeStatus;
 	static Button addIngredientButton, addStepButton, addRecipe;
 	static TextField nameTextField, quantityTextField, ingredientTextField, descriptionTextField;
 	static ComboBox unitComboBox;
@@ -45,12 +48,14 @@ public class AddRecipeScene {
 	static ArrayList<Ingredient> ingredientList = new ArrayList<Ingredient>();
 	static ArrayList<String> instructionList = new ArrayList<String>();
 	static ObservableList<String> options;
+	static Label fieldError, recipeAdded;
+	static boolean previousError = false; 
 
 	public static Scene getScene(MyCalendar c) {
 		// ScrollPane sp = new ScrollPane();
 
 		// VBox for whole Add Recipe Scene
-		VBox vertDisplay = new VBox();
+		vertDisplay = new VBox();
 		vertDisplay.setSpacing(20);
 
 		// Page Title
@@ -116,10 +121,17 @@ public class AddRecipeScene {
 		// Add Recipe Button
 		addRecipe = new Button("Add Recipe");
 		addRecipe.setOnAction(e -> ButtonClicked(e));
+		
+		//Add Recipe Button Status
+		addRecipeStatus = new HBox();
+		fieldError = new Label("Blank Text Fields or Invalid Number Format of an Ingredient's Quantity");
+		fieldError.setTextFill(Color.web("#cc0000"));
+		recipeAdded = new Label("Successfully added Recipe!");
+		recipeAdded.setTextFill(Color.web("#006b3c"));
 
 		// Add all sections to Scene's VBox
 		vertDisplay.getChildren().addAll(NavigationBar.getNavigateBox(), pageTitle, nameSection, descriptionSection,
-				ingredientVbox, addIngredientButton, directionVbox, addStepButton, addRecipe);
+				ingredientVbox, addIngredientButton, directionVbox, addStepButton, addRecipe, addRecipeStatus);
 
 		// Set screen size
 		return new Scene(vertDisplay, 400, 400);
@@ -148,12 +160,26 @@ public class AddRecipeScene {
 			directionsTextField.setPromptText("Enter Step " + stepCount);
 			instructionTextFieldList.add(directionsTextField);
 			directionVbox.getChildren().addAll(directionsTextField);
-			System.out.println("yeeee");
 		} else if (e.getSource() == addRecipe) {
+			//Invalid text fields, display error message
 			if (validFieldCheck() == false) {
-				System.out.println("Invalid Text Fields");
+				if(!previousError) {
+					addRecipeStatus.getChildren().add(fieldError);
+					previousError = true;
+				}
 				return;
 			}
+			//If there was an error before, but not anymore clear the error message
+			if(previousError) {
+				addRecipeStatus.getChildren().clear();
+				previousError = false;
+			}
+			//Display success message
+			if(!previousError) {
+				addRecipeStatus.getChildren().add(recipeAdded);
+			}
+			vertDisplay.getChildren().add(addRecipeStatus);
+			
 			transferDirectionList();
 			transferIngredientList();
 			for (int i = 0; i < ingredientList.size(); i++) {

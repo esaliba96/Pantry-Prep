@@ -1,5 +1,6 @@
 package Logic;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,13 +21,14 @@ public class NavigationBar {
 		printButton = new Button("Print Shopping List");
 		exitButton = new Button("Exit");
 		navigate = new HBox(8);
-		navigate.getChildren().addAll(menuButton, calendarButton, createRecipeButton, exitButton,printButton);
+		navigate.getChildren().addAll(menuButton, calendarButton, createRecipeButton, printButton, exitButton);
 		
 		//Define Actions for Buttons
 		menuButton.setOnAction(e-> ButtonClicked(stage, myCal, e));
 		printButton.setOnAction(e-> ButtonClicked(stage,myCal,e));
 		calendarButton.setOnAction(e-> ButtonClicked(stage, myCal, e));
         createRecipeButton.setOnAction(e-> ButtonClicked(stage, myCal, e));
+        exitButton.setOnAction(e-> ButtonClicked(stage, myCal, e));
 	}
 	
 	static public void ButtonClicked(Stage stage, MyCalendar myCal, ActionEvent e)
@@ -45,6 +47,10 @@ public class NavigationBar {
         else if(e.getSource()==calendarButton)
         {
         		stage.setScene(new WeeklyViewScene(myCal));
+        }
+        else if(e.getSource()==exitButton)
+        {
+        		Platform.exit();
         }
     }
 	

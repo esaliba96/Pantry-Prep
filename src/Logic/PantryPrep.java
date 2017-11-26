@@ -43,7 +43,7 @@ public class PantryPrep extends Application{
 		NavigationBar.main(myCal, stage);
 		menuScene = MenuScene.getScene(myCal);
 		addRecipeScene = AddRecipeScene.getScene(myCal);
-		weeklyViewScene = WeeklyViewScene.getScene(myCal);
+		weeklyViewScene = WeeklyViewScene.WeeklyViewScene(myCal);
 		
 		stage.setScene(weeklyViewScene);
 		stage.setWidth(575);

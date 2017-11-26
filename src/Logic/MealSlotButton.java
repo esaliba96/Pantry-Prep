@@ -24,10 +24,26 @@ public class MealSlotButton implements ButtonFactory{
 		mealSlotButton = new Text();
 		write(c);
 	}
+	
 	public void write(MyCalendar c) {
 		int dayOfWeek = c.selectedDay.get(Calendar.DAY_OF_WEEK);
-		Day day = c.getWeek().getDayRecipes(dayOfWeek -1);
-		mealSlotButton.setText("meal for " + c.selectedDay.get(Calendar.DAY_OF_MONTH));
+		Day day = Database.getMealsFromPlanner(c.selectedDay);
+		
+		if (day == null) {
+			mealSlotButton.setText("Unplanned");
+			return;
+		}
+		
+		Recipe recipe = day.getRecipe(meal);
+		if (recipe == null) {
+			mealSlotButton.setText("Unplanned");
+		} else {
+			mealSlotButton.setText(recipe.getName());
+		}
+	}
+	
+	public int getMeal() {
+		return this.meal;
 	}
 
 }

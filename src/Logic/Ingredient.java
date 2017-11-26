@@ -16,6 +16,9 @@ public class Ingredient{
 	{
 		return quantity; 
 	}
+	public void addToQuantity(int num){
+		quantity += num;
+	}
 	public String getUnit()
 	{
 		return unit;

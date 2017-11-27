@@ -61,7 +61,22 @@ public class WeeklyViewScene extends Scene {
 		VBox mealSlots = new VBox();
 		for (int i = 0; i < 3; i++) {
 			MealSlotButton msb = new MealSlotButton(c, uf, i);
-			mealSlots.getChildren().add(msb.mealSlotButton);
+			HBox mealSlot = new HBox();
+			
+			if(i == 0){
+				mealSlot.getChildren().add(new Label("Breakfast: "));
+			}
+			else if(i == 1){
+				mealSlot.getChildren().add(new Label("Lunch: "));
+			}
+			else if(i == 2){
+				mealSlot.getChildren().add(new Label("Dinner: "));
+			}
+			else{
+				mealSlot.getChildren().add(new Label("Other: "));
+			}
+			mealSlot.getChildren().add(msb.mealSlotButton);
+			mealSlots.getChildren().add(mealSlot);
 			RecipeScrollPane rsp = new RecipeScrollPane(recipeList, msb);
 			if (i == 2)
 				recipeLayer.getChildren().add(rsp.sp);

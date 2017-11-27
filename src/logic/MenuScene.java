@@ -12,13 +12,16 @@ public class MenuScene {
 		//Vbox creates a vertical column
 		VBox menuDisplay = new VBox();
 		//Creates and adds Month to Vbox
-		Label menuLabel = new Label("Pantry Prep is Awesome");
+		Label menuLabel = new Label("Welcome to Pantry Prep!");
+		Label descriptionLabel = new Label("Click any of the options above to get started "
+				+ "on your path to being a healthier person.");
 		if(NavigationBar.getNavigateBox() == null)
 		{
 			System.out.println("true");
 		}
 		menuDisplay.getChildren().add(NavigationBar.getNavigateBox());
 		menuDisplay.getChildren().add(menuLabel);
+		menuDisplay.getChildren().add(descriptionLabel);
 	
 		//Add root Vbox to the center of the Border Pane
 		//border.setCenter(menuDisplay);

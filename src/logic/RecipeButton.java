@@ -1,5 +1,7 @@
 package logic;
 
+import java.io.IOException;
+
 import javafx.event.EventHandler;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;

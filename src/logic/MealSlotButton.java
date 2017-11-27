@@ -31,11 +31,11 @@ public class MealSlotButton implements ButtonFactory{
 
         		if (day != null) {
         			recipe = day.getRecipe(meal);
+        			
         			if(recipe != null){
                 		PantryPrep.stage.setScene(RecipeViewScene.getScene(recipe));
             		}
         		}
-     
         		event.consume();
         	}
         });
@@ -43,7 +43,9 @@ public class MealSlotButton implements ButtonFactory{
 
 		
 		write(c);
-
+		
+		
+		
 	}
 	
 	public void write(MyCalendar c) {

@@ -13,7 +13,7 @@ public class NavigationBar {
 	
 	public static void main (MyCalendar myCal, Stage stage)
 	{
-		menuButton = new Button("Menu");
+		menuButton = new Button("About");
 		calendarButton = new Button("Calendar");
 		createRecipeButton = new Button("Create Recipe");
 		myIngredientsButton = new Button("My Ingredients");

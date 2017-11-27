@@ -34,7 +34,7 @@ public class PantryPrep extends Application{
 		weeklyViewScene = new WeeklyViewScene(myCal);
 		
 		stage.setScene(weeklyViewScene);
-		stage.setWidth(575);
+		stage.setWidth(585);
 		stage.setHeight(600);
 		
 		stage.show();

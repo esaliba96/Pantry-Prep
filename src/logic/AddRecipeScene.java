@@ -54,13 +54,16 @@ class AddRecipeScene {
 		VBox descriptionSection;
 		TextField quantityTextField;
 		TextField ingredientTextField;
-
+		Double sceneWidth = PantryPrep.stage.getWidth();
+		Double sceneHeight = PantryPrep.stage.getHeight();
+		
 		Group root = new Group();
 
 		ScrollBar sc = new ScrollBar();
+		sc.setLayoutX(sceneWidth-sc.getWidth() + 3);
 		sc.setMin(0);
 		sc.setOrientation(Orientation.VERTICAL);
-		sc.setPrefHeight(600);
+		sc.setPrefHeight(sceneHeight*2);
 		sc.setMax(1200);
 
 		// VBox for whole Add Recipe Scene
@@ -154,7 +157,7 @@ class AddRecipeScene {
 
 
 		// Set screen size
-		return new Scene(root, 400, 400);
+		return new Scene(root, sceneWidth, sceneHeight);
 	}
 
 	@SuppressWarnings("unchecked")

@@ -40,12 +40,15 @@ public class MyIngredientScene {
 
 	public static Scene getScene(MyCalendar c) {
 		Group root = new Group();
+		Double sceneWidth = PantryPrep.stage.getWidth();
+		Double sceneHeight = PantryPrep.stage.getHeight();
 			
 		ScrollBar sc = new ScrollBar();
-        sc.setMin(0);
-        sc.setOrientation(Orientation.VERTICAL);
-        sc.setPrefHeight(600);
-        sc.setMax(1200);
+		sc.setLayoutX(sceneWidth-sc.getWidth() + 3);
+		sc.setMin(0);
+		sc.setOrientation(Orientation.VERTICAL);
+		sc.setPrefHeight(sceneHeight*2);
+		sc.setMax(1200);
 
 		// VBox for whole My Ingredients Scene
 		vertDisplay = new VBox();

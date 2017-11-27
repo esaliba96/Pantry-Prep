@@ -1,6 +1,5 @@
 package Logic;
 import java.util.Calendar;
-import java.util.Date;
 
 public class Week {
 	private Day days[] = new Day[7];

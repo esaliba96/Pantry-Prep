@@ -1,11 +1,8 @@
 package Logic;
 
 import java.awt.Button;
-import java.awt.Insets;
 import java.util.ArrayList;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;

@@ -1,6 +1,5 @@
 package logic;
 
-import java.io.UncheckedIOException;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -11,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.util.ArrayList;
 import java.io.IOException;
-import java.lang.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -39,8 +37,8 @@ class AddRecipeScene {
 	private static ArrayList<TextField> quantityTextFieldList;
 	private static ArrayList<ComboBox> unitComboBoxList;
 	private static ArrayList<TextField> ingredientNameTextFieldList;
-	private static ArrayList<Ingredient> ingredientList = new ArrayList<Ingredient>();
-	private static ArrayList<String> instructionList = new ArrayList<String>();
+	private static ArrayList<Ingredient> ingredientList = new ArrayList<>();
+	private static ArrayList<String> instructionList = new ArrayList<>();
 	private static ObservableList<String> options;
 	private static Label fieldError;
 	private static Label recipeAdded;
@@ -230,7 +228,6 @@ class AddRecipeScene {
 			try {
 				Integer.parseInt(quantityTextFieldList.get(i).getText());
 			} catch (java.lang.NumberFormatException e) {
-				System.err.println("NumberFormatException..: " + e.getMessage());
 				return false;
 			}
 		}

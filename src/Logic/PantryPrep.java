@@ -23,14 +23,15 @@ public class PantryPrep extends Application{
 	private MyCalendar myCal;
 	private BorderPane border;
 	private Scene menuScene, addRecipeScene, weeklyViewScene;
+	protected static Stage stage;
 			
 	public static void main(String[] args) {		
 		launch(args);
 	}
 
 	@Override
-	public void start(Stage stage) throws Exception {
-		
+	public void start(Stage localStage) throws Exception {
+		stage = localStage;
 		/* Load saved data, if any */
 		Database.readRecipesFromFile();
 		Database.readPlannerFromFile();

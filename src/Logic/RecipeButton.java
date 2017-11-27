@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class RecipeButton {
 	
@@ -105,6 +106,15 @@ public class RecipeButton {
                 }              
                 event.consume();
             }
+        });
+        
+        recipeButton.setOnMouseClicked(new EventHandler <MouseEvent>(){
+        	public void handle(MouseEvent event) {
+        		System.out.println("mouse clicked");
+        		
+        		PantryPrep.stage.setScene(RecipeViewScene.getScene(r));
+        		event.consume();
+        	}
         });
 	}
 		

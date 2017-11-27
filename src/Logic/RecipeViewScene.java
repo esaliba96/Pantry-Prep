@@ -1,7 +1,11 @@
 package Logic;
 
+import java.awt.Button;
 import java.awt.Insets;
+import java.util.ArrayList;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -38,18 +42,23 @@ public class RecipeViewScene {
 	    }
 	    
 	    int count = 0;
+	    ArrayList<Text> textList = new ArrayList<Text>();
+	    
 	    for(String s : r.getInstructionList()){
 	    	count++;
 	    	Text instruction = new Text(count + ". " + s);
+	    	textList.add(instruction);
 	    	vbox2.getChildren().add(instruction);
 	    }
 	    
+	    count = 0;
+	    Button stepButton = new Button("Next Step");
 	    
-		
-		
 		
 		return new Scene(root, 400, 400);
 	}
+	
+	
 	
 }
 

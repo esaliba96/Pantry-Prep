@@ -27,16 +27,16 @@ public class DayButton implements ButtonFactory {
 		buttonText += ("\n" + day.get(Calendar.DAY_OF_MONTH));
 		dayButton.setText(buttonText);
 		if (CalendarUtil.compareDates(c.currentDay, c.selectedDay) && CalendarUtil.compareDates(c.selectedDay,day)){
-			dayButton.setStyle("-fx-background-color:#ff00ff");
+			dayButton.setStyle("-fx-background-color:#6897bb");
 		}
 		else if (c.selectedDay.equals(day)){
-			dayButton.setStyle("-fx-background-color:#ff0000");
+			dayButton.setStyle("-fx-background-color:#40e0d0");
 		}
 		else if (CalendarUtil.compareDates(day, c.currentDay)){
-			dayButton.setStyle("-fx-background-color:#0000ff");
+			dayButton.setStyle("-fx-background-color:#66cccc");
 		}
 		else {
-			dayButton.setStyle("-fx-background-color:#00ff00");
+			dayButton.setStyle("-fx-background-color:#c0d6e4");
 		}
 	}
 }

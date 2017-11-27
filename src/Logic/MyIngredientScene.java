@@ -34,11 +34,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.control.ScrollBar;
 import javafx.geometry.Orientation;
 
-public class AddRecipeScene {
+public class MyIngredientScene {
 
 	static VBox vertDisplay, nameSection, descriptionSection, ingredientVbox, directionVbox;
 	static HBox addRecipeStatus;
-	static Button addIngredientButton, addStepButton, addRecipe;
+	static Button addIngredientButton, addMyIngredientsButton;
 	static TextField nameTextField, quantityTextField, ingredientTextField, descriptionTextField;
 	static ComboBox unitComboBox;
 	static int stepCount = 1;
@@ -62,28 +62,14 @@ public class AddRecipeScene {
         sc.setPrefHeight(600);
         sc.setMax(1200);
 
-		// VBox for whole Add Recipe Scene
+		// VBox for whole My Ingredients Scene
 		vertDisplay = new VBox();
 		vertDisplay.setSpacing(20);
 
 		// Page Title
-		Label pageTitle = new Label("Add Recipe");
-
-		/*** Recipe Name Label and Text Field ***/
-		nameSection = new VBox();
-		nameSection.setSpacing(10);
-		Label nameLabel = new Label("Name:");
-		nameTextField = new TextField();
-		nameTextField.setPromptText("Recipe Name");
-		nameSection.getChildren().addAll(nameLabel, nameTextField);
-
-		/*** Recipe Description Label and Text Field ***/
-		descriptionSection = new VBox();
-		descriptionSection.setSpacing(10);
-		Label descriptionLabel = new Label("Description:");
-		descriptionTextField = new TextField();
-		descriptionTextField.setPromptText("Description of recipe");
-		descriptionSection.getChildren().addAll(descriptionLabel, descriptionTextField);
+		Label pageTitle = new Label("My Ingredients");
+		Label pageMemo = new Label("Enter the ingredients you have.");
+		
 
 		/*** Recipe Ingredients Label and Text Field ***/
 		ingredientVbox = new VBox();
@@ -112,34 +98,20 @@ public class AddRecipeScene {
 		unitComboBoxList.add(unitComboBox);
 		ingredientNameTextFieldList.add(ingredientTextField);
 
-		/*** Recipe Directions Label and Text Field ***/
-		directionVbox = new VBox();
-		directionVbox.setSpacing(10);
-		Label directionLabel = new Label("Directions");
-		TextField directionsTextField = new TextField();
-		directionsTextField.setPromptText("Enter Step " + stepCount);
-		// Initialize TextField ArrayList and add first item
-		instructionTextFieldList = new ArrayList<TextField>();
-		instructionTextFieldList.add(directionsTextField);
-		directionVbox.getChildren().addAll(directionLabel, directionsTextField);
-		// Add More Steps Button and Action
-		addStepButton = new Button("Add Additional Step");
-		addStepButton.setOnAction(e -> ButtonClicked(e));
-
-		// Add Recipe Button
-		addRecipe = new Button("Add Recipe");
-		addRecipe.setOnAction(e -> ButtonClicked(e));
+		// Add Ingredients Button
+		addMyIngredientsButton = new Button("Save My Ingredients");
+		addMyIngredientsButton.setOnAction(e -> ButtonClicked(e));
 		
 		//Add Recipe Button Status
 		addRecipeStatus = new HBox();
 		fieldError = new Label("Blank Text Fields or Invalid Number Format of an Ingredient's Quantity");
 		fieldError.setTextFill(Color.web("#cc0000"));
-		recipeAdded = new Label("Successfully added Recipe!");
+		recipeAdded = new Label("Successfully added Ingredients!");
 		recipeAdded.setTextFill(Color.web("#006b3c"));
 
 		// Add all sections to Scene's VBox
-		vertDisplay.getChildren().addAll(NavigationBar.getNavigateBox(), pageTitle, nameSection, descriptionSection,
-				ingredientVbox, addIngredientButton, directionVbox, addStepButton, addRecipe, addRecipeStatus);
+		vertDisplay.getChildren().addAll(NavigationBar.getNavigateBox(), pageTitle, pageMemo,
+				ingredientVbox, addIngredientButton, addMyIngredientsButton, addRecipeStatus);
 		
 		
 		sc.valueProperty().addListener(new ChangeListener<Number>() {
@@ -172,13 +144,7 @@ public class AddRecipeScene {
 			quantityTextFieldList.add(quantityTextField);
 			unitComboBoxList.add(unitComboBox);
 			ingredientNameTextFieldList.add(ingredientTextField);
-		} else if (e.getSource() == addStepButton) {
-			stepCount++;
-			TextField directionsTextField = new TextField();
-			directionsTextField.setPromptText("Enter Step " + stepCount);
-			instructionTextFieldList.add(directionsTextField);
-			directionVbox.getChildren().addAll(directionsTextField);
-		} else if (e.getSource() == addRecipe) {
+		} else if (e.getSource() == addMyIngredientsButton) {
 			//Invalid text fields, display error message
 			if (validFieldCheck() == false) {
 				if(!previousError) {
@@ -198,31 +164,24 @@ public class AddRecipeScene {
 			}
 			vertDisplay.getChildren().add(addRecipeStatus);
 			
-			transferDirectionList();
 			transferIngredientList();
-			for (int i = 0; i < ingredientList.size(); i++) {
-				System.out.println("this: " + ingredientList.get(i).getQuantity());
-				System.out.println("this2: " + ingredientList.get(i).getUnit());
-				System.out.println("this3: " + ingredientList.get(i).getIngredientName());
-			}
 
-			String name = nameTextField.getText();
-			String description = descriptionTextField.getText();
-			Recipe addedRecipe = new Recipe(name, description, ingredientList, instructionList);
+			//String name = nameTextField.getText();
+			//String description = descriptionTextField.getText();
+			/*Recipe addedRecipe = new Recipe(name, description, ingredientList, instructionList);
 			Database.saveRecipeToList(addedRecipe);
 			try {
 				Database.writeRecipeListToFile(addedRecipe);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}
-
+			}*/
 		}
 	}
 
 	static public boolean validFieldCheck() {
 		for (int i = 0; i < quantityTextFieldList.size(); i++) {
-			if (nameTextField.getText().equals("") || quantityTextFieldList.get(i).getText().equals("")
+			if (quantityTextFieldList.get(i).getText().equals("")
 					|| unitComboBoxList.get(i).getSelectionModel().isEmpty()
 					|| ingredientNameTextFieldList.get(i).getText().equals("")) {
 				return false;
@@ -237,15 +196,6 @@ public class AddRecipeScene {
 		}
 
 		return true;
-	}
-
-	static public void transferDirectionList() {
-		for (int i = 0; i < instructionTextFieldList.size(); i++) {
-			instructionList.add(instructionTextFieldList.get(i).getText());
-		}
-		for (int i = 0; i < instructionList.size(); i++) {
-			System.out.println(instructionList.get(i));
-		}
 	}
 
 	static public void transferIngredientList() {

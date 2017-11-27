@@ -11,23 +11,25 @@ import java.util.Calendar;
 public class NavigationBar {
 	
 	static HBox navigate;
-	static Button menuButton, calendarButton, createRecipeButton, exitButton, printButton;
+	static Button menuButton, calendarButton, createRecipeButton, exitButton, printButton, myIngredientsButton;
 	
 	public static void main (MyCalendar myCal, Stage stage)
 	{
 		menuButton = new Button("Menu");
 		calendarButton = new Button("Calendar");
 		createRecipeButton = new Button("Create Recipe");
+		myIngredientsButton = new Button("My Ingredients");
 		printButton = new Button("Print Shopping List");
 		exitButton = new Button("Exit");
 		navigate = new HBox(8);
-		navigate.getChildren().addAll(menuButton, calendarButton, createRecipeButton, printButton, exitButton);
+		navigate.getChildren().addAll(menuButton, calendarButton, createRecipeButton, myIngredientsButton, printButton, exitButton);
 		
 		//Define Actions for Buttons
 		menuButton.setOnAction(e-> ButtonClicked(stage, myCal, e));
 		printButton.setOnAction(e-> ButtonClicked(stage,myCal,e));
 		calendarButton.setOnAction(e-> ButtonClicked(stage, myCal, e));
         createRecipeButton.setOnAction(e-> ButtonClicked(stage, myCal, e));
+        myIngredientsButton.setOnAction(e-> ButtonClicked(stage, myCal, e));
         exitButton.setOnAction(e-> ButtonClicked(stage, myCal, e));
 	}
 	
@@ -48,6 +50,10 @@ public class NavigationBar {
         {
         		stage.setScene(new WeeklyViewScene(myCal));
         }
+        else if(e.getSource()==myIngredientsButton)
+        {
+        		stage.setScene(MyIngredientScene.getScene(myCal));
+        }
         else if(e.getSource()==exitButton)
         {
         		Platform.exit();
@@ -58,5 +64,4 @@ public class NavigationBar {
 	{
 		return navigate;
 	}
-	
 }

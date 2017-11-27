@@ -1,17 +1,8 @@
 package Logic;
 
-import java.util.Calendar;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Button;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Group;
-import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
 public class MenuScene {

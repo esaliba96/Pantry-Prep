@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.lang.*;
 import java.util.Calendar;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -30,7 +31,8 @@ import javafx.scene.Group;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.scene.paint.Color;
-
+import javafx.scene.control.ScrollBar;
+import javafx.geometry.Orientation;
 
 public class AddRecipeScene {
 
@@ -52,7 +54,13 @@ public class AddRecipeScene {
 	static boolean previousError = false; 
 
 	public static Scene getScene(MyCalendar c) {
-		// ScrollPane sp = new ScrollPane();
+		Group root = new Group();
+			
+		ScrollBar sc = new ScrollBar();
+        sc.setMin(0);
+        sc.setOrientation(Orientation.VERTICAL);
+        sc.setPrefHeight(600);
+        sc.setMax(1200);
 
 		// VBox for whole Add Recipe Scene
 		vertDisplay = new VBox();
@@ -132,9 +140,19 @@ public class AddRecipeScene {
 		// Add all sections to Scene's VBox
 		vertDisplay.getChildren().addAll(NavigationBar.getNavigateBox(), pageTitle, nameSection, descriptionSection,
 				ingredientVbox, addIngredientButton, directionVbox, addStepButton, addRecipe, addRecipeStatus);
+		
+		
+		sc.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov,
+                Number old_val, Number new_val) {
+                    vertDisplay.setLayoutY(-new_val.doubleValue());
+            }
+        });
+		
+		root.getChildren().addAll(vertDisplay, sc);
 
 		// Set screen size
-		return new Scene(vertDisplay, 400, 400);
+		return new Scene(root, 400, 400);
 	}
 
 	static public void ButtonClicked(ActionEvent e) {

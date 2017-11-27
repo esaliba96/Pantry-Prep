@@ -45,7 +45,6 @@ public class PantryPrep extends Application{
 		ArrayList<String> instructions = new ArrayList<String>();
 		Recipe recipe = new Recipe("recipe name", "Your recipe description.", ingredients, instructions);
 		stage.setTitle("PantryPrepXX");
-		stage.setScene(AddIngredientScene.getScene(recipe));
 		stage.show();
          */
 	}

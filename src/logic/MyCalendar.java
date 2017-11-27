@@ -1,8 +1,6 @@
 package logic;
-
 import java.util.Calendar;
 import java.util.LinkedList;
-
 
 public class MyCalendar {
 	private LinkedList<Week> weeks;

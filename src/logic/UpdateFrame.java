@@ -2,17 +2,17 @@ package logic;
 
 import java.util.ArrayList;
 
-public class UpdateFrame {
+class UpdateFrame {
 	private ArrayList<ButtonFactory> facts;
-	public UpdateFrame(){
-		facts = new ArrayList<ButtonFactory>();
+	UpdateFrame(){
+		facts = new ArrayList<>();
 	}
-	public void addFactory(ButtonFactory fact){
+	void addFactory(ButtonFactory fact){
 		facts.add(fact);
 	}
-	public void update(MyCalendar c){
-		for (int i = 0; i < facts.size();i++){
-			facts.get(i).write(c);
+	void update(MyCalendar c) {
+		for (ButtonFactory i : facts){
+			i.write(c);
 		}
 	}
 }

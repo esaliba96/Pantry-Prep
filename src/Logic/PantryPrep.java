@@ -43,7 +43,7 @@ public class PantryPrep extends Application{
 		NavigationBar.main(myCal, stage);
 		menuScene = MenuScene.getScene(myCal);
 		addRecipeScene = AddRecipeScene.getScene(myCal);
-		weeklyViewScene = WeeklyViewScene.WeeklyViewScene(myCal);
+		weeklyViewScene = new WeeklyViewScene(myCal);
 		
 		stage.setScene(weeklyViewScene);
 		stage.setWidth(575);
@@ -60,28 +60,5 @@ public class PantryPrep extends Application{
 		stage.setScene(AddIngredientScene.getScene(recipe));
 		stage.show();
          */
-		
-		/*
-		//Code to test recipe scene
-		
-		Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
-		Ingredient i2 = new Ingredient(2, "", "Eggs");
-		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
-		ArrayList<MealSlotButton> meals = new ArrayList<>();
-		ArrayList<String> sList = new ArrayList<String>();
-		sList.add("Step 1");
-		sList.add("Step 2");
-		sList.add("Step 3");
-		iList.add(i1);
-		iList.add(i2);
-		Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs recipe", iList, sList);
-
-		stage.setTitle("PantryPrepXX");
-		stage.setScene(RecipeViewScene.getScene(r1));
-		stage.show();
-		*/
-		 
-		 
-		 
 	}
 }

@@ -2,7 +2,7 @@ package logic;
 import java.util.Calendar;
 
 public class Week {
-	private Day days[] = new Day[7];
+	private Day[] days = new Day[7];
 	private Calendar sunday;
 	public Week(Calendar sunday){
 		for (int i = 0; i < 7;i++){

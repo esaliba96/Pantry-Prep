@@ -1,8 +1,6 @@
 package logic;
 
-import java.awt.Button;
 import java.util.ArrayList;
-
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -11,6 +9,9 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class RecipeViewScene {
+
+   private RecipeViewScene() {
+   }
 
    public static Scene getScene(Recipe r) {
 
@@ -40,7 +41,7 @@ public class RecipeViewScene {
       }
 
       int count = 0;
-      ArrayList<Text> textList = new ArrayList<Text>();
+      ArrayList<Text> textList = new ArrayList<>();
       Text instructions = new Text("Instructions");
       vbox2.getChildren().add(instructions);
       for (String s : r.getInstructionList()) {
@@ -49,9 +50,6 @@ public class RecipeViewScene {
          textList.add(instruction);
          vbox2.getChildren().add(instruction);
       }
-
-      count = 0;
-      Button stepButton = new Button("Next Step");
 
       return new Scene(root, 400, 400);
    }

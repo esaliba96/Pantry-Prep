@@ -50,7 +50,7 @@ public class NavigationBar {
       } else if (e.getSource() == calendarButton) {
          stage.setScene(new WeeklyViewScene(myCal));
       } else if (e.getSource() == myIngredientsButton) {
-         stage.setScene(MyIngredientScene.getScene(myCal));
+         stage.setScene(MyIngredientScene.getScene());
       } else if (e.getSource() == exitButton) {
          Platform.exit();
       }

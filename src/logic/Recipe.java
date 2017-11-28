@@ -3,13 +3,13 @@ package logic;
 import java.util.*;
 
 public class Recipe {
-	private ArrayList<Ingredient> ingredientList;
+	private List<Ingredient> ingredientList;
 	private String description;
 	private String name;
-	private ArrayList<String> instructionList;
+	private List<String> instructionList;
 
-	public Recipe(String name, String description, ArrayList<Ingredient> ingredientList,
-			ArrayList<String> instructionList) {
+	public Recipe(String name, String description, List<Ingredient> ingredientList,
+			List<String> instructionList) {
 		this.name = name;
 		this.description = description;
 		this.ingredientList = ingredientList;
@@ -24,15 +24,15 @@ public class Recipe {
 		return description;
 	}
 
-	public ArrayList<String> getInstructionList() {
+	public List<String> getInstructionList() {
 		return instructionList;
 	}
 
-	public ArrayList<Ingredient> getIngredientList() {
+	public List<Ingredient> getIngredientList() {
 		return ingredientList;
 	}
 
-	public void setIngredientList(ArrayList<Ingredient> ingredientList) {
+	public void setIngredientList(List<Ingredient> ingredientList) {
 		this.ingredientList = ingredientList;
 	}
 
@@ -44,7 +44,7 @@ public class Recipe {
 		this.name = name;
 	}
 
-	public void setInstructionList(ArrayList<String> instructionList) {
+	public void setInstructionList(List<String> instructionList) {
 		this.instructionList = instructionList;
 	}
 	

@@ -11,20 +11,20 @@ import javafx.scene.text.Text;
 
 public class RecipeButton {
 	
-	Text recipeButton;
+	Text text;
 	
 	public RecipeButton(Recipe r, MealSlotButton m){
-		recipeButton = new Text(r.getName());
+		text = new Text(r.getName());
 
-		recipeButton.setOnDragDetected(new EventHandler <MouseEvent>() {
+		text.setOnDragDetected(new EventHandler <MouseEvent>() {
             public void handle(MouseEvent event) {
                 /* drag was detected, start drag-and-drop gesture*/
                 /* allow any transfer mode */
-                Dragboard db = recipeButton.startDragAndDrop(TransferMode.ANY);
+                Dragboard db = text.startDragAndDrop(TransferMode.ANY);
                 
                 /* put a string on dragboard */
                 ClipboardContent content = new ClipboardContent();
-                content.putString(recipeButton.getText());
+                content.putString(text.getText());
                 db.setContent(content);
                 
                 event.consume();
@@ -78,7 +78,7 @@ public class RecipeButton {
                     m.text.setText(db.getString());
                     success = true;
                 }
-                /* let the recipeButton know whether the string was successfully 
+                /* let the text know whether the string was successfully
                  * transferred and used */
                 event.setDropCompleted(success);
                 
@@ -86,18 +86,18 @@ public class RecipeButton {
             }
         });
 
-        recipeButton.setOnDragDone(new EventHandler <DragEvent>() {
+        text.setOnDragDone(new EventHandler <DragEvent>() {
             public void handle(DragEvent event) {
                 /* the drag-and-drop gesture ended */
                 /* if the data was successfully moved, clear it */
                 if (event.getTransferMode() == TransferMode.MOVE) {
-                    recipeButton.setText(recipeButton.getText());
+                    text.setText(text.getText());
                 }              
                 event.consume();
             }
         });
         
-        recipeButton.setOnMouseClicked(new EventHandler <MouseEvent>(){
+        text.setOnMouseClicked(new EventHandler <MouseEvent>(){
         	public void handle(MouseEvent event) {
         		PantryPrep.stage.setScene(RecipeViewScene.getScene(r));
         		event.consume();

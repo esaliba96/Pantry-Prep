@@ -1,7 +1,6 @@
 package logic;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -18,7 +17,8 @@ public class WeeklyViewScene extends Scene {
 
    // GUI elements
    private MonthLabel monthLabel;
-   private SwitchWeeksButton prevWeek, nextWeek;
+   private SwitchWeeksButton prevWeek;
+   private SwitchWeeksButton nextWeek;
 
    private List<Recipe> recipeList;
    private MealSlotButton[] meals;
@@ -94,47 +94,12 @@ public class WeeklyViewScene extends Scene {
          Database.saveMealsToPlanner(c.selectedDay, day);
          try {
             Database.writePlannerToFile();
-            System.err.println("Saved");
          } catch (IOException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
+            return;
          }
       });
 
       root.getChildren().add(saveButton);
       setRoot(root);
-   }
-
-   private ArrayList<Recipe> getDummyRecipeList() {
-      ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
-
-      Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
-      Ingredient i2 = new Ingredient(2, "", "Eggs");
-      ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
-      ArrayList<String> sList = new ArrayList<String>();
-      sList.add("Step 1");
-      sList.add("Step 2");
-      sList.add("Step 3");
-      iList.add(i1);
-      iList.add(i2);
-
-      Ingredient i3 = new Ingredient(1, "Tbsp", "Beff");
-      Ingredient i4 = new Ingredient(2, "husks", "Corn");
-      ArrayList<Ingredient> iList1 = new ArrayList<Ingredient>();
-      ArrayList<String> sList1 = new ArrayList<String>();
-      sList1.add("Step 1");
-      sList1.add("Step 2");
-      sList1.add("Step 3");
-      iList1.add(i3);
-      iList1.add(i4);
-
-      Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs recipe", iList, sList);
-
-      Recipe r2 = new Recipe("Beef Corn", "Corn with beeff", iList1, sList1);
-
-      recipeList.add(r1);
-      recipeList.add(r2);
-
-      return recipeList;
    }
 }

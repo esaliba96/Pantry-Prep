@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 public class RecipeViewScene {
 
    private RecipeViewScene() {
+	   
    }
 
    public static Scene getScene(Recipe r) {
@@ -20,40 +21,74 @@ public class RecipeViewScene {
       root.getChildren().add(NavigationBar.getNavigateBox());
       root.setSpacing(15);
 
-      Text title = new Text(r.getName());
-      title.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-      root.getChildren().add(title);
-      Text description = new Text("Description: " + r.getDescription());
-      root.getChildren().add(description);
 
       HBox hbox = new HBox();
-      VBox vbox1 = new VBox();
-      VBox vbox2 = new VBox();
+      VBox vbox1 = populateIngredientsList(r);
+      VBox vbox2 = populateInstructionsList(r);
       hbox.setSpacing(20);
       root.getChildren().add(hbox);
       hbox.getChildren().add(vbox2);
       hbox.getChildren().add(vbox1);
-      Text ingredientsList = new Text("Ingredients");
-      vbox1.getChildren().add(ingredientsList);
-      for (Ingredient i : r.getIngredientList()) {
-         Text ingredient = new Text(i.getQuantity() + " " + i.getUnit() + i.getIngredientName());
-         vbox1.getChildren().add(ingredient);
-      }
-
-      int count = 0;
-      ArrayList<Text> textList = new ArrayList<>();
-      Text instructions = new Text("Instructions");
-      vbox2.getChildren().add(instructions);
-      for (String s : r.getInstructionList()) {
-         count++;
-         Text instruction = new Text(count + ". " + s);
-         textList.add(instruction);
-         vbox2.getChildren().add(instruction);
-      }
+      
+      populateTitle(root, r);
+      populateDescription(root, r);
+      
+      
 
       return new Scene(root, 400, 400);
    }
 
+   private static VBox populateIngredientsList( Recipe r){
+	   if (r == null) {
+		   return null;
+	   }
+	   
+	   VBox vbox1 = new VBox();
+	   Text ingredientsList = new Text("Ingredients");
+	      
+	      vbox1.getChildren().add(ingredientsList);
+	      for (Ingredient i : r.getIngredientList()) {
+	         Text ingredient = new Text(i.getQuantity() + " " + i.getUnit() + i.getIngredientName());
+	         vbox1.getChildren().add(ingredient);
+	      }
+	      return vbox1;
+   }
+   
+   private static VBox populateInstructionsList(Recipe r){
+	   if (r == null) {
+		   return null;
+	   }
+	   
+	   VBox vbox2 = new VBox();
+	   
+	   int count = 0;
+	   ArrayList<Text> textList = new ArrayList<>();
+	   Text instructions = new Text("Instructions");
+	   vbox2.getChildren().add(instructions);
+	   for (String s : r.getInstructionList()) {
+	      count++;
+	      Text instruction = new Text(count + ". " + s);
+	      textList.add(instruction);
+	      vbox2.getChildren().add(instruction);
+	   }
+	   
+	   return vbox2;
+   }
+   
+   private static void populateTitle(VBox root, Recipe r){
+	   
+	   Text title = new Text(r.getName());
+	   title.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+	   root.getChildren().add(title);
+
+   }
+   
+   private static void populateDescription(VBox root, Recipe r) {
+	   Text description = new Text("Description: " + r.getDescription());
+	      root.getChildren().add(description);
+   }
+   
+   
 
 }
 

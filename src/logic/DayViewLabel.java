@@ -15,7 +15,6 @@ public class DayViewLabel implements ButtonFactory{
 
 	@Override
 	public void write(MyCalendar c) {
-		System.out.println("updating Day view");
 		Calendar day;
 		if (isEnd){
 			day = c.pi.getEnd();

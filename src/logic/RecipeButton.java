@@ -21,8 +21,6 @@ public class RecipeButton {
 		recipeButton.setOnDragDetected(new EventHandler <MouseEvent>() {
             public void handle(MouseEvent event) {
                 /* drag was detected, start drag-and-drop gesture*/
-                System.out.println("onDragDetected");
-                
                 /* allow any transfer mode */
                 Dragboard db = recipeButton.startDragAndDrop(TransferMode.ANY);
                 
@@ -38,8 +36,6 @@ public class RecipeButton {
         m.mealSlotButton.setOnDragOver(new EventHandler <DragEvent>() {
             public void handle(DragEvent event) {
                 /* data is dragged over the m.mealSlotButton */
-                System.out.println("onDragOver");
-                
                 /* accept it only if it is  not dragged from the same node 
                  * and if it has a string data */
                 if (event.getGestureSource() != m.mealSlotButton &&
@@ -55,7 +51,6 @@ public class RecipeButton {
         m.mealSlotButton.setOnDragEntered(new EventHandler <DragEvent>() {
             public void handle(DragEvent event) {
                 /* the drag-and-drop gesture entered the m.mealSlotButton */
-                System.out.println("onDragEntered");
                 /* show to the user that it is an actual gesture m.mealSlotButton */
                 if (event.getGestureSource() != m.mealSlotButton &&
                         event.getDragboard().hasString()) {
@@ -78,7 +73,6 @@ public class RecipeButton {
         m.mealSlotButton.setOnDragDropped(new EventHandler <DragEvent>() {
             public void handle(DragEvent event) {
                 /* data dropped */
-                System.out.println("onDragDropped");
                 /* if there is a string data on dragboard, read it and use it */
                 Dragboard db = event.getDragboard();
                 boolean success = false;
@@ -97,8 +91,6 @@ public class RecipeButton {
         recipeButton.setOnDragDone(new EventHandler <DragEvent>() {
             public void handle(DragEvent event) {
                 /* the drag-and-drop gesture ended */
-                System.out.println("onDragDone");
-
                 /* if the data was successfully moved, clear it */
                 if (event.getTransferMode() == TransferMode.MOVE) {
                     recipeButton.setText(recipeButton.getText());
@@ -109,8 +101,6 @@ public class RecipeButton {
         
         recipeButton.setOnMouseClicked(new EventHandler <MouseEvent>(){
         	public void handle(MouseEvent event) {
-        		System.out.println("mouse clicked");
-        		
         		PantryPrep.stage.setScene(RecipeViewScene.getScene(r));
         		event.consume();
         	}

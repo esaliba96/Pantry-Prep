@@ -1,11 +1,12 @@
-package logic;
-
+package test;
+/*
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+*/
 
 public class TestSuite1 {
-
+	/*
     @Test
     public void createAnAchievement() {
         Achievement tester = new Achievement("Name", "A description."); 
@@ -28,4 +29,5 @@ public class TestSuite1 {
         assertEquals(true, tester.isAchieved(), "The acheivement must be completed.");
 
     }
+    */
 }

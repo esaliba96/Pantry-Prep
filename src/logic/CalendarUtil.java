@@ -72,10 +72,7 @@ class CalendarUtil {
       if (a.get(Calendar.MONTH) != b.get(Calendar.MONTH)){
          return false;
       }
-      if (a.get(Calendar.YEAR) != b.get(Calendar.YEAR)){
-         return false;
-      }
-      return true;
+      return a.get(Calendar.YEAR) == b.get(Calendar.YEAR);
    }
 }
  

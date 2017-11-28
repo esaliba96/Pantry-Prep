@@ -49,7 +49,7 @@ class AddRecipeScene {
 	}
 
 	@SuppressWarnings("unchecked")
-	static Scene getScene(MyCalendar c) {
+	static Scene getScene() {
 		VBox nameSection;
 		VBox descriptionSection;
 		TextField quantityTextField;

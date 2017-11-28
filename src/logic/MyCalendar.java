@@ -4,15 +4,15 @@ import java.util.LinkedList;
 
 public class MyCalendar {
 	private LinkedList<Week> weeks;
-	public Calendar currentDay; 
-	public Calendar selectedDay;
-	public PrintInterval pi; 
+	Calendar currentDay;
+	Calendar selectedDay;
+	PrintInterval pi;
 	private int index = 0;
 	private int currentDayIndex = 0;
 	public MyCalendar(Calendar currentDay){
 		Calendar c = Calendar.getInstance();
 		pi = new PrintInterval();
-		weeks = new LinkedList<Week>();
+		weeks = new LinkedList<>();
 		this.currentDay = currentDay;
 		this.selectedDay = currentDay;
 		weeks.add(new Week(CalendarUtil.getOffsetDate(c,(c.get(Calendar.DAY_OF_WEEK) * -1) + 1)));

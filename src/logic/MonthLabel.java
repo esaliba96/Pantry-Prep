@@ -5,26 +5,26 @@ import java.util.Calendar;
 import javafx.scene.control.Label;
 
 public class MonthLabel implements ButtonFactory{
-	public Label monthLabel;
+	Label label;
 	public MonthLabel(MyCalendar c,UpdateFrame uf){
 		uf.addFactory(this);
-		monthLabel = new Label("");
+		label = new Label("");
 		write(c);
 	}
 	public void write(MyCalendar c) {
-		Calendar Sunday = c.getWeek().getDay(DayOfWeek.SUNDAY);
-		Calendar Saturday = c.getWeek().getDay(DayOfWeek.SATURDAY);
-		int SundayMonth = Sunday.get(Calendar.MONTH);
-		int SaturdayMonth = Saturday.get(Calendar.MONTH);
+		Calendar sunday = c.getWeek().getDay(DayOfWeek.SUNDAY);
+		Calendar saturday = c.getWeek().getDay(DayOfWeek.SATURDAY);
+		int sundayMonth = sunday.get(Calendar.MONTH);
+		int saturdayMonth = saturday.get(Calendar.MONTH);
 		String myMonthString = "";
-		if (SaturdayMonth == SundayMonth){
-			myMonthString = CalendarUtil.numMonthToString(SaturdayMonth);
+		if (saturdayMonth == sundayMonth){
+			myMonthString = CalendarUtil.numMonthToString(saturdayMonth);
 		}
 		else{
-			myMonthString += CalendarUtil.numMonthToString(SundayMonth);
+			myMonthString += CalendarUtil.numMonthToString(sundayMonth);
 			myMonthString += " / ";
-			myMonthString += CalendarUtil.numMonthToString(SaturdayMonth);
+			myMonthString += CalendarUtil.numMonthToString(saturdayMonth);
 		}
-		monthLabel.setText(myMonthString);
+		label.setText(myMonthString);
 	}
 }

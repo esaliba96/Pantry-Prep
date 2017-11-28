@@ -1,6 +1,7 @@
 package logic;
 
 public class MeasurementUtil {
+   private MeasurementUtil(){}
 	public static String getMeasurementNames(Measurement m){
 		switch(m){
 		case CUP:

@@ -5,7 +5,7 @@ import java.util.Calendar;
 import javafx.scene.control.Label;
 
 public class DayViewLabel implements ButtonFactory{
-	public Label dayView = new Label();
+	Label dayView = new Label();
 	private boolean isEnd; 
 	public DayViewLabel(UpdateFrame uf,MyCalendar c,boolean isEnd){
 		uf.addFactory(this);

@@ -7,7 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class MealSlotButton implements ButtonFactory{
-	public Text mealSlotButton;
+	Text text;
 	private int meal;
 	private Recipe recipe;
 
@@ -15,7 +15,7 @@ public class MealSlotButton implements ButtonFactory{
 	public MealSlotButton(MyCalendar c, UpdateFrame uf,int mealNum){
 		this.meal = mealNum;
 		uf.addFactory(this);
-		mealSlotButton = new Text();
+		text = new Text();
 		this.recipe = null;
 		
 		
@@ -25,7 +25,7 @@ public class MealSlotButton implements ButtonFactory{
 
 		
 		
-		mealSlotButton.setOnMouseClicked(new EventHandler <MouseEvent>(){
+		text.setOnMouseClicked(new EventHandler <MouseEvent>(){
         	public void handle(MouseEvent event) {
         		Day day = Database.getMealsFromPlanner(c.selectedDay);
 
@@ -49,22 +49,19 @@ public class MealSlotButton implements ButtonFactory{
 	}
 	
 	public void write(MyCalendar c) {
-		int dayOfWeek = c.selectedDay.get(Calendar.DAY_OF_WEEK);
 		Day day = Database.getMealsFromPlanner(c.selectedDay);
 		
 		if (day == null) {
-			mealSlotButton.setText("Unplanned");
+			text.setText("Unplanned");
 			return;
 		}
 		
-		Recipe recipe = day.getRecipe(meal);
-	
-		
+		recipe = day.getRecipe(meal);
+
 		if (recipe == null) {
-			mealSlotButton.setText("Unplanned");
+			text.setText("Unplanned");
 		} else {
-			this.recipe = recipe;
-			mealSlotButton.setText(recipe.getName());
+			text.setText(recipe.getName());
 		}
 	}
 	

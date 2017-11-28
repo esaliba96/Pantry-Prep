@@ -1,7 +1,5 @@
 package logic;
 
-import java.io.IOException;
-
 import javafx.event.EventHandler;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
@@ -33,12 +31,12 @@ public class RecipeButton {
             }
         });
 
-        m.mealSlotButton.setOnDragOver(new EventHandler <DragEvent>() {
+        m.text.setOnDragOver(new EventHandler <DragEvent>() {
             public void handle(DragEvent event) {
-                /* data is dragged over the m.mealSlotButton */
+                /* data is dragged over the m.text */
                 /* accept it only if it is  not dragged from the same node 
                  * and if it has a string data */
-                if (event.getGestureSource() != m.mealSlotButton &&
+                if (event.getGestureSource() != m.text &&
                         event.getDragboard().hasString()) {
                     /* allow for both copying and moving, whatever user chooses */
                     event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
@@ -48,36 +46,36 @@ public class RecipeButton {
             }
         });
 
-        m.mealSlotButton.setOnDragEntered(new EventHandler <DragEvent>() {
+        m.text.setOnDragEntered(new EventHandler <DragEvent>() {
             public void handle(DragEvent event) {
-                /* the drag-and-drop gesture entered the m.mealSlotButton */
-                /* show to the user that it is an actual gesture m.mealSlotButton */
-                if (event.getGestureSource() != m.mealSlotButton &&
+                /* the drag-and-drop gesture entered the m.text */
+                /* show to the user that it is an actual gesture m.text */
+                if (event.getGestureSource() != m.text &&
                         event.getDragboard().hasString()) {
-                    m.mealSlotButton.setFill(Color.GREEN);
+                    m.text.setFill(Color.GREEN);
                 }
                 
                 event.consume();
             }
         });
 
-        m.mealSlotButton.setOnDragExited(new EventHandler <DragEvent>() {
+        m.text.setOnDragExited(new EventHandler <DragEvent>() {
             public void handle(DragEvent event) {
                 /* mouse moved away, remove the graphical cues */
-                m.mealSlotButton.setFill(Color.BLACK);
+                m.text.setFill(Color.BLACK);
                 
                 event.consume();
             }
         });
         
-        m.mealSlotButton.setOnDragDropped(new EventHandler <DragEvent>() {
+        m.text.setOnDragDropped(new EventHandler <DragEvent>() {
             public void handle(DragEvent event) {
                 /* data dropped */
                 /* if there is a string data on dragboard, read it and use it */
                 Dragboard db = event.getDragboard();
                 boolean success = false;
                 if (db.hasString()) {
-                    m.mealSlotButton.setText(db.getString());
+                    m.text.setText(db.getString());
                     success = true;
                 }
                 /* let the recipeButton know whether the string was successfully 

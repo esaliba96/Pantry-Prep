@@ -46,7 +46,7 @@ public class PrintInterval {
 	public ArrayList<Recipe> getRecipes(MyCalendar c){
 		ArrayList<Recipe> myList = new ArrayList<Recipe>();
 		for (int i = 0; i <= (endOffset - begOffset);i++){
-			Day d = c.getOffsetDay(begOffset + i);
+			Day d = Database.getMealsFromPlanner(CalendarUtil.getOffsetDate(beginning,i));
 			if (d != null){
 				for (int j = 0; j < 3; j++){
 					if (d.getRecipe(j) != null){

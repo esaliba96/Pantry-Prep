@@ -94,7 +94,7 @@ public class PrintInterval {
 			boolean found = false;
 			for (Ingredient j : myIngredients){
 				if (i.getIngredientName().equalsIgnoreCase(j.getIngredientName())){
-					if (i.getUnit().equals(j.getIngredientName())){
+					if (i.getUnit().equals(j.getUnit())){
 						j.addToQuantity(i.getQuantity());
 						found = true;
 					}

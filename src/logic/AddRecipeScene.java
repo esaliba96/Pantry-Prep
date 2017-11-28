@@ -153,9 +153,6 @@ class AddRecipeScene {
 		vertDisplay.getChildren().addAll(NavigationBar.getNavigateBox(), pageTitle, nameSection, descriptionSection,
 			ingredientVbox, addIngredientButton, directionVbox, addStepButton, addRecipe, addRecipeStatus);
 
-
-
-
 		// Set screen size
 		return new Scene(root, sceneWidth, sceneHeight);
 	}
@@ -201,8 +198,8 @@ class AddRecipeScene {
 			//Display success message
 			if(!previousError) {
 				addRecipeStatus.getChildren().add(recipeAdded);
+				previousError=true;
 			}
-			vertDisplay.getChildren().add(addRecipeStatus);
 
 			transferDirectionList();
 			transferIngredientList();

@@ -22,7 +22,7 @@ import javafx.geometry.Orientation;
 public class MyIngredientScene {
 
 	static VBox vertDisplay, nameSection, descriptionSection, ingredientVbox, directionVbox;
-	static HBox addRecipeStatus;
+	static HBox addIngredientStatus;
 	static Button addIngredientButton, addMyIngredientsButton;
 	static TextField nameTextField, quantityTextField, ingredientTextField, descriptionTextField;
 	static ComboBox unitComboBox;
@@ -91,7 +91,7 @@ public class MyIngredientScene {
 		addMyIngredientsButton.setOnAction(e -> ButtonClicked(e));
 		
 		//Add Recipe Button Status
-		addRecipeStatus = new HBox();
+		addIngredientStatus = new HBox();
 		fieldError = new Label("Blank Text Fields or Invalid Number Format of an Ingredient's Quantity");
 		fieldError.setTextFill(Color.web("#cc0000"));
 		recipeAdded = new Label("Successfully added Ingredients!");
@@ -99,7 +99,7 @@ public class MyIngredientScene {
 
 		// Add all sections to Scene's VBox
 		vertDisplay.getChildren().addAll(NavigationBar.getNavigateBox(), pageTitle, pageMemo,
-				ingredientVbox, addIngredientButton, addMyIngredientsButton, addRecipeStatus);
+				ingredientVbox, addIngredientButton, addMyIngredientsButton, addIngredientStatus);
 		
 		
 		sc.valueProperty().addListener(new ChangeListener<Number>() {
@@ -136,34 +136,23 @@ public class MyIngredientScene {
 			//Invalid text fields, display error message
 			if (validFieldCheck() == false) {
 				if(!previousError) {
-					addRecipeStatus.getChildren().add(fieldError);
+					addIngredientStatus.getChildren().add(fieldError);
 					previousError = true;
 				}
 				return;
 			}
 			//If there was an error before, but not anymore clear the error message
 			if(previousError) {
-				addRecipeStatus.getChildren().clear();
+				addIngredientStatus.getChildren().clear();
 				previousError = false;
 			}
 			//Display success message
 			if(!previousError) {
-				addRecipeStatus.getChildren().add(recipeAdded);
+				addIngredientStatus.getChildren().add(recipeAdded);
+				previousError=true;
 			}
-			vertDisplay.getChildren().add(addRecipeStatus);
 			
 			transferIngredientList();
-
-			//String name = nameTextField.getText();
-			//String description = descriptionTextField.getText();
-			/*Recipe addedRecipe = new Recipe(name, description, ingredientList, instructionList);
-			Database.saveRecipeToList(addedRecipe);
-			try {
-				Database.writeRecipeListToFile(addedRecipe);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}*/
 		}
 	}
 

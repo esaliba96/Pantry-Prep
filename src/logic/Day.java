@@ -15,6 +15,9 @@ public class Day {
 	}
 
 	public Recipe getRecipe(int i) {
+		if (i < 0 || i > 2) {
+			System.exit(1);
+		}
 		return meals[i];
 	}
 }

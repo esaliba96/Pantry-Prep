@@ -2,10 +2,10 @@ package logic;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-class CalendarUtil {
-   private CalendarUtil() {}
+public class CalendarUtil {
+   public CalendarUtil() {}
    //returns the date of the date c + the offset
-   static Calendar getOffsetDate(Calendar c, int offSet){
+   public static Calendar getOffsetDate(Calendar c, int offSet){
       int year = c.get(Calendar.YEAR);
       int month = c.get(Calendar.MONTH);
       int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);

@@ -10,7 +10,7 @@ public class MyCalendar {
 	private int index = 0;
 	private int currentDayIndex = 0;
 	public MyCalendar(Calendar currentDay){
-		Calendar c = Calendar.getInstance();
+		Calendar c = currentDay;
 		pi = new PrintInterval();
 		weeks = new LinkedList<>();
 		this.currentDay = currentDay;

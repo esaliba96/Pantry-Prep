@@ -24,7 +24,7 @@ public class NavigationBar {
       calendarButton = new Button("Calendar");
       createRecipeButton = new Button("Create Recipe");
       myIngredientsButton = new Button("My Ingredients");
-      printButton = new Button("Print Shopping List");
+      printButton = new Button("Shopping List");
       exitButton = new Button("Exit");
       navigate = new HBox(8);
       navigate.getChildren()

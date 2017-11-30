@@ -7,6 +7,12 @@ import org.junit.runners.Suite;
 
 @Suite.SuiteClasses({
    TestDay.class,
+   TestMeasurementUtil.class,
+   IngredientTest.class,
+   RecipeTest.class,
+   TestOffset.class,
+   TestOffsetLowerEdge.class,
+   TestOffsetUpperEdge.class,
 })
 
 public class TestSuite {   

@@ -17,10 +17,10 @@ public class PrintInterval {
 	private int endOffset;
 	private ArrayList<Ingredient> myIngredients;
 
-	public PrintInterval() {
+	public PrintInterval(Calendar c) {
 		myIngredients = new ArrayList<>();
-		beginning = Calendar.getInstance();
-		end = Calendar.getInstance();
+		beginning = c;
+		end = c;
 		begOffset = 0;
 		endOffset = 0;
 	}

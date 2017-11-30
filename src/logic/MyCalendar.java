@@ -4,14 +4,14 @@ import java.util.LinkedList;
 
 public class MyCalendar {
 	private LinkedList<Week> weeks;
-	Calendar currentDay;
-	Calendar selectedDay;
-	PrintInterval pi;
+	public Calendar currentDay;
+	public Calendar selectedDay;
+	public PrintInterval pi;
 	private int index = 0;
 	private int currentDayIndex = 0;
 	public MyCalendar(Calendar currentDay){
 		Calendar c = currentDay;
-		pi = new PrintInterval();
+		pi = new PrintInterval(currentDay);
 		weeks = new LinkedList<>();
 		this.currentDay = currentDay;
 		this.selectedDay = currentDay;

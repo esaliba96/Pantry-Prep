@@ -111,6 +111,4 @@ public class RecipeTest {
 		assertEquals("Step 3",testList.get(2));
 		
 	}
-	
-
 }

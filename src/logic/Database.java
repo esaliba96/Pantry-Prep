@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-class Database {
+public class Database {
 
    private static HashMap<String, Recipe> recipes = new HashMap<>();
    private static HashMap<String, Day> planner = new HashMap<>();
@@ -48,11 +48,12 @@ class Database {
       return planner.get(key);
    }
 
-   static void saveRecipeToList(Recipe r) {
+   public static void saveRecipeToList(Recipe r) {
       String name = r.getName();
       if (recipeExists(name)) {
          System.exit(1);
       }
+      //HashMap stores items with put()  takes in a key and value
       recipes.put(name, r);
    }
 
@@ -112,8 +113,8 @@ class Database {
       }
    }
 
-   public static void writeRecipeListToFile(Recipe r) throws IOException {
-      File f = new File("pp_recipes.txt");
+   public static void writeRecipeListToFile(Recipe r, String fileName) throws IOException {
+      File f = new File(fileName);
       FileWriter fw = new FileWriter(f, true);
       BufferedWriter bw = new BufferedWriter(fw);
       PrintWriter out = new PrintWriter(bw);

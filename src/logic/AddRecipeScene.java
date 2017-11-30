@@ -208,7 +208,7 @@ class AddRecipeScene {
 			Recipe addedRecipe = new Recipe(name, description, ingredientList, instructionList);
 			Database.saveRecipeToList(addedRecipe);
 			try {
-				Database.writeRecipeListToFile(addedRecipe);
+				Database.writeRecipeListToFile(addedRecipe, "pp_recipes.txt");
 			} catch (IOException e1) {
 				return;
 			}

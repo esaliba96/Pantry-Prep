@@ -3,31 +3,14 @@ package test;
 import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
-
-//import junit.framework.Assert;
-
-//import java.lang.Object;
-//import static junitx.framework.FileAssert;
-//import static org.apache.commons.io.FileUtils;
-
-/*import org.junit.Before;
-import org.eclipse.core.runtime.Assert;
-import org.springframework.util.Assert;
-import org.junit.Assert;
-import junit.framework.Assert;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import junit.framework.Test;
-import org.codehaus.plexus.util.FileUtils;
-import org.apache.commons.io.FileUtils;*/
-
+import java.util.Scanner;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.File;
+import static org.junit.Assert.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-
 import logic.Ingredient;
 import logic.Recipe;
 import logic.Database;
@@ -71,7 +54,8 @@ public class RecipeDatabaseOutputTest {
 		out.println("Step 3");
 		out.close();
 		
-	    final File output = folder.newFile("recipeDatabaseTestFile.txt");
+	    final File output = new File("recipeDatabaseTestFile.txt");
+	    output.delete();
 		
 		Database.saveRecipeToList(recipe);
 		try {
@@ -80,9 +64,16 @@ public class RecipeDatabaseOutputTest {
 			e1.printStackTrace();
 		}
 		
-		//Now I need to assert that recipeDatabaseTestFile.txt is the same as expectedRecipeDatabase.txt
-
-	    //Assert.assertEquals(FileUtils.readLines(expected), FileUtils.readLines(output));
+		Scanner outputScanner = new Scanner(output);
+		Scanner expectedScanner = new Scanner(expected);
 		
+		try {
+			while (expectedScanner.hasNextLine()) {
+		    		assertTrue(expectedScanner.nextLine().equals(outputScanner.nextLine()));
+		    }
+		} finally {
+			outputScanner.close();
+			expectedScanner.close();
+		}
 	}
 }

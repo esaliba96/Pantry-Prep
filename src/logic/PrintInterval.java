@@ -68,13 +68,13 @@ public class PrintInterval {
 		return myList;
 	}
 
-	public boolean printRecipes() {
+	public boolean printRecipes(String fileName) {
 		if (!validate()) {
 			return false;
 		}
 
 		List<Recipe> myList = getRecipes();
-		File f = new File("shopping_list.txt");
+		File f = new File(fileName);
 		FileWriter fw;
 		BufferedWriter bw;
 		PrintWriter out;

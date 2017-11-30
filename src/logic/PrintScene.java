@@ -76,7 +76,7 @@ public class PrintScene {
 				message.setTextFill(Color.web("#6b002f"));
 				if (!c.pi.validate()) {
 					message.setText("Invalid dates!");
-				} else if (!c.pi.printRecipes()) {
+				} else if (!c.pi.printRecipes("shopping_list.txt")) {
 					message.setText("Unable to save shopping list to file!");
 				} else {
 					message.setTextFill(Color.web("#006b3c"));

@@ -25,7 +25,12 @@ public class RecipeViewScene {
       HBox hbox = new HBox();
       VBox vbox1 = populateIngredientsList(r);
       VBox vbox2 = populateInstructionsList(r);
-      populateTitle(root, r);
+      try {
+    	  populateTitle(root, r);
+      } catch (NullPointerException e) {
+    	  return null;
+      }
+      
       populateDescription(root, r);
       hbox.setSpacing(20);
       root.getChildren().add(hbox);

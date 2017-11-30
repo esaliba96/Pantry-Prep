@@ -3,7 +3,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class CalendarUtil {
-   public CalendarUtil() {}
+   private CalendarUtil() {
+	   //not called
+   }
    //returns the date of the date c + the offset
    public static Calendar getOffsetDate(Calendar c, int offSet){
       int year = c.get(Calendar.YEAR);

@@ -196,10 +196,9 @@ class AddRecipeScene {
 				previousError = false;
 			}
 			//Display success message
-			if(!previousError) {
-				addRecipeStatus.getChildren().add(recipeAdded);
-				previousError=true;
-			}
+			addRecipeStatus.getChildren().add(recipeAdded);
+			previousError=true;
+
 
 			transferDirectionList();
 			transferIngredientList();
@@ -211,7 +210,7 @@ class AddRecipeScene {
 			try {
 				Database.writeRecipeListToFile(addedRecipe);
 			} catch (IOException e1) {
-				e1.printStackTrace();
+				return;
 			}
 
 		}

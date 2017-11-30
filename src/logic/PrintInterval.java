@@ -75,11 +75,14 @@ public class PrintInterval {
 
 		List<Recipe> myList = getRecipes();
 		File f = new File("shopping_list.txt");
-
+		FileWriter fw;
+		BufferedWriter bw;
+		PrintWriter out;
+		
 		try {
-			FileWriter fw = new FileWriter(f);
-			BufferedWriter bw = new BufferedWriter(fw);
-			PrintWriter out = new PrintWriter(bw);
+			fw = new FileWriter(f);
+			bw = new BufferedWriter(fw);
+			out = new PrintWriter(bw);
 			StringBuilder sb = new StringBuilder("Shopping list from ");
 			sb.append(CalendarUtil.numMonthToString(beginning.get(Calendar.MONTH)));
 			sb.append(" ");
@@ -100,10 +103,8 @@ public class PrintInterval {
 
 			out.close();
 		} catch (IOException e) {
-			System.err.println("Error: Unable to print shopping list.");
 			return false;
-		}
-		
+		} 
 		return true;
 
 	}

@@ -1,6 +1,6 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -52,7 +52,6 @@ public class TestCalendarUtil {
 		}
 		start.setTime(currentDay);
 		Calendar end = CalendarUtil.getOffsetDate(start, -2);
-		CalendarUtil.
 		assertEquals(30, end.get(end.DAY_OF_MONTH), 0);
 	}
 

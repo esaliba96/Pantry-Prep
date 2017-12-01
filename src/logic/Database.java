@@ -19,7 +19,7 @@ public class Database {
    private Database() {
    }
 
-   private static boolean recipeExists(String name) {
+   public static boolean recipeExists(String name) {
       return recipes.containsKey(name);
    }
 
@@ -50,9 +50,6 @@ public class Database {
 
    public static void saveRecipeToList(Recipe r) {
       String name = r.getName();
-      if (recipeExists(name)) {
-         System.exit(1);
-      }
       //HashMap stores items with put()  takes in a key and value
       recipes.put(name, r);
    }

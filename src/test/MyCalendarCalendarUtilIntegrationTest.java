@@ -8,7 +8,6 @@ import java.util.GregorianCalendar;
 import org.junit.Test;
 
 import logic.CalendarUtil;
-import logic.DayOfWeek;
 import logic.MyCalendar;
 
 public class MyCalendarCalendarUtilIntegrationTest {

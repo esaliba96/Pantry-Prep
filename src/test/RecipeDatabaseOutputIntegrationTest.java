@@ -1,3 +1,4 @@
+//Person in Charge: Jason Lomsdalen
 package test;
 
 import org.junit.Test;
@@ -34,7 +35,7 @@ public class RecipeDatabaseOutputIntegrationTest {
 		sList.add("Step 3");
 		iList.add(testIngredClass);
 		iList.add(i2);
-		Recipe recipe = new Recipe("Eggs on Toast", "A saffron eggs recipe", iList, sList);
+		Recipe recipe = new Recipe("Eggs on Toast with Bacon", "A saffron eggs recipe", iList, sList);
 		//Integration Test: Test Output and Recipe Class
 		Recipe testRecipeClass = new Recipe(recipe.getName(), recipe.getDescription(), recipe.getIngredientList(), recipe.getInstructionList());
 		
@@ -43,7 +44,7 @@ public class RecipeDatabaseOutputIntegrationTest {
 		FileWriter fw = new FileWriter(expected, true);
 	    BufferedWriter bw = new BufferedWriter(fw);
 	    PrintWriter out = new PrintWriter(bw);
-		out.println("Eggs on Toast");
+		out.println("Eggs on Toast with Bacon");
 		out.println("A saffron eggs recipe");
 		out.println("2");
 		out.println("3");

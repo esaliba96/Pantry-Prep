@@ -80,5 +80,6 @@ public class RecipeDatabaseOutputIntegrationTest {
 			outputScanner.close();
 			expectedScanner.close();
 		}
+		 output.delete();
 	}
 }

@@ -10,6 +10,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -27,7 +29,7 @@ public class ShoppingListOutputTest {
 		MyCalendar myCal = new MyCalendar(c);
 		//Then call 
 		final File output = new File("shoppingListDatabaseTestFile.txt");
-		output.delete();
+
 		myCal.getpi().printRecipes("shoppingListDatabaseTestFile.txt");
 		
 		final File expected = folder.newFile("expectedShoppingListDatabase.txt");
@@ -42,12 +44,20 @@ public class ShoppingListOutputTest {
 		
 		try {
 			while (expectedScanner.hasNextLine()) {
-		    		assertTrue(expectedScanner.nextLine().equals(outputScanner.nextLine()));
+				//Output String from file
+		    		String outputString = outputScanner.nextLine();
+		    		//Expected String from file
+		    		String expectedString = expectedScanner.nextLine();
+		    		assertEquals(expectedString, outputString);
 		    }
 		} finally {
 			outputScanner.close();
 			expectedScanner.close();
 		}
-		output.delete();
+		cleanUp(output.toPath());
+	}
+	
+	public void cleanUp(Path path) throws IOException{
+		  Files.delete(path);
 	}
 }

@@ -10,14 +10,20 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.io.IOException;
 
 public class ShoppingListOutputIntegrationTest {
+	
+	private static final Logger LOGGER = Logger.getLogger(RecipeDatabaseOutputIntegrationTest.class.getName());
 
 	@Rule
 	public TemporaryFolder folder = new TemporaryFolder();
@@ -30,14 +36,13 @@ public class ShoppingListOutputIntegrationTest {
 		try {
 			currentDay = new SimpleDateFormat("M/dd/yyyy").parse("11/15/2017");
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.log( Level.SEVERE, e.toString(), e );
 		}
 		c.setTime(currentDay);
 		MyCalendar myCal = new MyCalendar(c);
 		//Then call 
 		final File output = new File("shoppingListDatabaseIntegrationTestFile.txt");
-		output.delete();
+		
 		myCal.getpi().printRecipes("shoppingListDatabaseIntegrationTestFile.txt");
 		
 		final File expected = folder.newFile("expectedShoppingListDatabaseIntegration.txt");
@@ -47,18 +52,28 @@ public class ShoppingListOutputIntegrationTest {
 		out.println("Shopping list from November 15 to November 15");
 		out.close();
 		
-		Scanner outputScanner = new Scanner(output);
+		//Scanner Initialized
 		Scanner expectedScanner = new Scanner(expected);
+		//Scanner Initialized
+		Scanner outputScanner = new Scanner(output);
 		
+		//Check line by line to see if the text files differ
 		try {
 			while (expectedScanner.hasNextLine()) {
+				//Assert True
 		    		assertTrue(expectedScanner.nextLine().equals(outputScanner.nextLine()));
 		    }
 		} finally {
-			outputScanner.close();
+			//Close Scanner
 			expectedScanner.close();
+			//Close Scanner
+			outputScanner.close();
+			
 		}
-		 output.delete();
+		cleanUp(output.toPath());
 	}
-
+	
+	public void cleanUp(Path path) throws IOException{
+		  Files.delete(path);
+	}
 }

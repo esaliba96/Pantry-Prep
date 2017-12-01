@@ -15,8 +15,14 @@ import java.io.PrintWriter;
 import logic.Ingredient;
 import logic.Recipe;
 import logic.Database;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class RecipeDatabaseOutputIntegrationTest {
+	
+	private static final Logger LOGGER = Logger.getLogger(RecipeDatabaseOutputIntegrationTest.class.getName());
 
 	@Rule
 	public TemporaryFolder folder = new TemporaryFolder();	
@@ -28,8 +34,8 @@ public class RecipeDatabaseOutputIntegrationTest {
 		Ingredient i2 = new Ingredient(2, "Individual", "Eggs");
 		//Integration Test: Test Output as well as Ingredient Class
 		Ingredient testIngredClass  =new Ingredient(i1.getQuantity(), i1.getUnit(), i1.getIngredientName());
-		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
-		ArrayList<String> sList = new ArrayList<String>();
+		ArrayList<Ingredient> iList = new ArrayList<>();
+		ArrayList<String> sList = new ArrayList<>();
 		sList.add("Step 1");
 		sList.add("Step 2");
 		sList.add("Step 3");
@@ -60,26 +66,34 @@ public class RecipeDatabaseOutputIntegrationTest {
 		out.close();
 		
 	    final File output = new File("recipeDatabaseIntegrationTestFile.txt");
-	    output.delete();
 		
 		Database.saveRecipeToList(testRecipeClass);
+		//Try-Catch Block
 		try {
+			//Write Recipe List to File
 			Database.writeRecipeListToFile(testRecipeClass, "recipeDatabaseIntegrationTestFile.txt");
 		} catch (IOException e1) {
-			e1.printStackTrace();
+			//Catch Exception
+			LOGGER.log( Level.SEVERE, e1.toString(), e1 );
 		}
 		
-		Scanner outputScanner = new Scanner(output);
 		Scanner expectedScanner = new Scanner(expected);
+		Scanner outputScanner = new Scanner(output);
 		
 		try {
 			while (expectedScanner.hasNextLine()) {
-		    		assertTrue(expectedScanner.nextLine().equals(outputScanner.nextLine()));
+				String expectedString = expectedScanner.nextLine();
+				String outputString = outputScanner.nextLine();
+		    		assertEquals(expectedString, outputString);
 		    }
 		} finally {
-			outputScanner.close();
 			expectedScanner.close();
+			outputScanner.close();
 		}
-		 output.delete();
+		cleanUp(output.toPath());
+	}
+	
+	public void cleanUp(Path path) throws IOException{
+		  Files.delete(path);
 	}
 }

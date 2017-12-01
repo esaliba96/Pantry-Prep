@@ -69,21 +69,18 @@ public class MyIngredientScene {
 
       /*** Recipe Ingredients Label and Text Field ***/
       ingredientVbox = new VBox();
-      ingredientVbox.setSpacing(10);
       Label ingredientLabel = new Label("Ingredients:");
+      ingredientVbox.setSpacing(10);
       // Text Fields for each Ingredient
-      HBox recipeTextFields = new HBox();
       quantityTextField = new TextField();
+      HBox recipeTextFields = new HBox();
       quantityTextField.setPromptText("Quantity");
       options = FXCollections.observableArrayList(MeasurementUtil.getAllMeasurementNames());
-      unitComboBox = new ComboBox(options);
       ingredientTextField = new TextField();
+      unitComboBox = new ComboBox(options);
       ingredientTextField.setPromptText("Ingredient Name");
-      // Add Ingredient text fields to HBox
-      recipeTextFields.getChildren().addAll(quantityTextField, unitComboBox, ingredientTextField);
-      // Add to Ingredient section VBox
       ingredientVbox.getChildren().addAll(ingredientLabel, recipeTextFields);
-      // Add More Ingredient Button and Action
+      recipeTextFields.getChildren().addAll(quantityTextField, unitComboBox, ingredientTextField);
       addIngredientButton = new Button("Add Another Ingredient");
       addIngredientButton.setOnAction(MyIngredientScene::buttonClicked);
       // Create TextField Arrays and add to them
@@ -121,19 +118,15 @@ public class MyIngredientScene {
 
    public static void buttonClicked(ActionEvent e) {
       if (e.getSource() == addIngredientButton) {
-         ingredientCount++;
          HBox recipeTextFields = new HBox();
          TextField quantityTextField = new TextField();
-         quantityTextField.setPromptText("Quantity");
          unitComboBox = new ComboBox(options);
+         quantityTextField.setPromptText("Quantity");
          TextField ingredientTextField = new TextField();
+         unitComboBox = new ComboBox(options);
          ingredientTextField.setPromptText("Ingredient Name");
-         // Add Ingredient text fields to HBox
-         recipeTextFields.getChildren()
-             .addAll(quantityTextField, unitComboBox, ingredientTextField);
-         // Add to Ingredient section VBox
+         recipeTextFields.getChildren().addAll(quantityTextField, unitComboBox, ingredientTextField);
          ingredientVbox.getChildren().addAll(recipeTextFields);
-         // Add text fields to lists
          quantityTextFieldList.add(quantityTextField);
          unitComboBoxList.add(unitComboBox);
          ingredientNameTextFieldList.add(ingredientTextField);

@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.File;
@@ -12,11 +13,16 @@ import static org.junit.Assert.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.logging.Logger;
 import logic.Ingredient;
 import logic.Recipe;
 import logic.Database;
 
 public class RecipeDatabaseOutputTest {
+	
+	private static final Logger LOGGER = Logger.getLogger(RecipeDatabaseOutputIntegrationTest.class.getName());
 
 	@Rule
 	public TemporaryFolder folder = new TemporaryFolder();	
@@ -26,8 +32,8 @@ public class RecipeDatabaseOutputTest {
 		//Create a Recipe Object
 		Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
 		Ingredient i2 = new Ingredient(2, "Individual", "Eggs");
-		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
-		ArrayList<String> sList = new ArrayList<String>();
+		ArrayList<Ingredient> iList = new ArrayList<>();
+		ArrayList<String> sList = new ArrayList<>();
 		sList.add("Step 1");
 		sList.add("Step 2");
 		sList.add("Step 3");
@@ -56,13 +62,12 @@ public class RecipeDatabaseOutputTest {
 		out.close();
 		
 	    final File output = new File("recipeDatabaseTestFile.txt");
-	    output.delete();
 		
 		Database.saveRecipeToList(recipe);
 		try {
 			Database.writeRecipeListToFile(recipe, "recipeDatabaseTestFile.txt");
 		} catch (IOException e1) {
-			e1.printStackTrace();
+			LOGGER.log( Level.SEVERE, e1.toString(), e1 );
 		}
 		
 		Scanner outputScanner = new Scanner(output);
@@ -76,6 +81,10 @@ public class RecipeDatabaseOutputTest {
 			outputScanner.close();
 			expectedScanner.close();
 		}
-		 output.delete();
+		cleanUp(output.toPath());
+	}
+	
+	public void cleanUp(Path path) throws IOException{
+		  Files.delete(path);
 	}
 }

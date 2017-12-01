@@ -18,17 +18,18 @@ import logic.Recipe;
 public class HashMapUnitTest {
 	
 	@Test
-	public void TestRecipeHashMap() {
-		Recipe input, output;
+	public void testRecipeHashMap() {
+		Recipe input;
+		Recipe output;
 		
 		// Create a Recipe Object
-		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
+		ArrayList<Ingredient> iList = new ArrayList<>();
 		Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
 		Ingredient i2 = new Ingredient(2, "Individual", "Eggs");
 		iList.add(i1);
 		iList.add(i2);
 		
-		ArrayList<String> sList = new ArrayList<String>();
+		ArrayList<String> sList = new ArrayList<>();
 		String s1 = "Step 1";
 		String s2 = "Step 2";
 		String s3 = "Step 3";
@@ -47,23 +48,23 @@ public class HashMapUnitTest {
 	}
 	
 	@Test
-	public void TestPlannerHashMap() {
+	public void testPlannerHashMap() {
 		Calendar calendar = Calendar.getInstance();
 		Recipe[] inputRecipes = new Recipe[3];
 		Day inputDay = new Day();
 		Day outputDay;
 		
 		for (int i = 0; i < 3; i++) {
-			ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
-			Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
+			ArrayList<Ingredient> iList = new ArrayList<>();
 			Ingredient i2 = new Ingredient(2, "Individual", "Eggs");
+			Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
 			iList.add(i1);
 			iList.add(i2);
 			
-			ArrayList<String> sList = new ArrayList<String>();
-			String s1 = "Step 1";
+			ArrayList<String> sList = new ArrayList<>();
 			String s2 = "Step 2";
 			String s3 = "Step 3";
+			String s1 = "Step 1";
 			sList.add(s1);
 			sList.add(s2);
 			sList.add(s3);

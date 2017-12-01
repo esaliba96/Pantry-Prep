@@ -17,16 +17,16 @@ public class TestCalendarUtil {
 	static final String FORMAT = "M/dd/yyyy";
 	@Test
 	public void testOffset() {
-		Calendar  start = Calendar.getInstance();
 		Date currentDay = new Date();
+		Calendar  start = Calendar.getInstance();
 		try {
 			currentDay = new SimpleDateFormat(FORMAT).parse("11/15/2017");
 		} catch (ParseException e) {
 			return;
 		}
 		start.setTime(currentDay);
-		Calendar end = CalendarUtil.getOffsetDate(start, 2);
-		assertEquals(17, end.get(Calendar.DAY_OF_MONTH), 0);
+		Calendar endDate = CalendarUtil.getOffsetDate(start, 2);
+		assertEquals(17, endDate.get(Calendar.DAY_OF_MONTH), 0);
 	}
 	@Test
 	public void testOffsetUpperbound() {

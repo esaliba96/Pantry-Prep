@@ -11,10 +11,8 @@ import org.junit.runners.Suite;
 
 @Suite.SuiteClasses({
    TestDay.class,
-   TestMeasurementUtil.class,
-   IngredientTest.class,
-   RecipeTest.class,
+   TestMeasurementUtil.class
 })
 
 public class NoahTestSuite {   
-}  
+}

@@ -1,3 +1,5 @@
+// Trevor Brown's Integration Tests
+
 package test;
 
 import static org.junit.Assert.*;
@@ -48,6 +50,30 @@ public class RecipeIngredientIntegrationTest {
 		assertNotEquals(2, i3.getQuantity());
 		assertNotEquals(1, i4.getQuantity());
 		
+	}
+	
+	@Test
+	public void testSetIngredientList() {
+		Ingredient oldIng = new Ingredient(1, "Tbsp", "Saffron");
+		ArrayList<Ingredient> oldList = new ArrayList<Ingredient>();
+		ArrayList<String> sList = new ArrayList<String>();
+		sList.add("Step 1");
+		sList.add("Step 2");
+		sList.add("Step 3");
+		oldList.add(oldIng);
+			
+		Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs recipe", 
+				oldList, sList);
+				
+		Ingredient newIng = new Ingredient(2, "Tbsp", "Saffron");
+		ArrayList<Ingredient> newList = new ArrayList<Ingredient>();
+		newList.add(newIng);
+		r1.setIngredientList(newList);
+		
+		ArrayList<Ingredient> outputList = (ArrayList<Ingredient>) r1.getIngredientList();
+		Ingredient outputIng = outputList.get(0);
+		
+		assertEquals(newIng.getQuantity(), outputIng.getQuantity());
 	}
 
 }

@@ -1,3 +1,5 @@
+// Noah Paige's Tests
+
 package test;
 
 import logic.*;
@@ -32,19 +34,4 @@ public class TestMeasurementUtil {
 		Measurement myEnum = Measurement.TEASPOON;
 		assertEquals(MeasurementUtil.getMeasurementNames(myEnum), "Teaspoon(s)");
     }
-    
-//    @Test
-//    public void TestGetAllMeasurementNames() {
-//		String[] names = new String[Measurement.values().length];
-//		for (int i = 0; i < Measurement.values().length; i++){
-//			names[i] = MeasurementUtil.getMeasurementNames(Measurement.values()[i]); 
-//		}
-//		for(int i = 0; i < names.length; i++)
-//		{
-//			assertEquals(MeasurementUtil.getAllMeasurementNames()[i], names);
-//
-//		}
-//    }
-
-
 }

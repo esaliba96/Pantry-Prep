@@ -1,3 +1,5 @@
+// Trevor Brown's Unit Tests
+
 package test;
 
 import static org.junit.Assert.*;
@@ -24,6 +26,7 @@ public class IngredientTest {
 		
 	}
 	
+	@Test
 	public void testIngredientGetQuantity() {
 		Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
 		Ingredient i2 = new Ingredient(2, "(Eggs)", "Eggs");
@@ -38,6 +41,7 @@ public class IngredientTest {
 		assertNotEquals(11, i1.getQuantity());
 	}
 	
+	@Test
 	public void testIngredientGetUnit() {
 		Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
 		Ingredient i2 = new Ingredient(2, "(Eggs)", "Eggs");

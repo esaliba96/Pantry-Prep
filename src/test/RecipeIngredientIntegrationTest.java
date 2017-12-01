@@ -21,37 +21,39 @@ public class RecipeIngredientIntegrationTest {
 	public void testGetIngredient() {
 		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
 		Ingredient i2 = new Ingredient(2, EGGP, EGG);
-		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
-		ArrayList<String> sList = new ArrayList<String>();
-		sList.add("Step 1");
-		sList.add("Step 2");
-		sList.add("Step 3");
-		iList.add(i1);
-		iList.add(i2);
+		ArrayList<Ingredient> ingList = new ArrayList<>();
+		ArrayList<String> stuffList = new ArrayList<>();
+		stuffList.add("Step 1");
+		stuffList.add("Step 2");
+		stuffList.add("Step 3");
+		ingList.add(i1);
+		ingList.add(i2);
 		
 		
 		Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs recipe", 
-				iList, sList);
+				ingList, stuffList);
 		
 		
 		ArrayList<Ingredient> testList = (ArrayList<Ingredient>)r1.getIngredientList();
 		Ingredient i3 = testList.get(0);
+		assertEquals(SAFF, i3.getIngredientName());
+		assertNotEquals(EGG, i3.getIngredientName());
+		assertNotEquals(2, i3.getQuantity());
+		assertEquals(1, i3.getQuantity());
+
+		
 		Ingredient i4 = testList.get(1);
 		assertEquals(2, testList.size());
 		
-		assertEquals(SAFF, i3.getIngredientName());
 		assertEquals(EGG, i4.getIngredientName());
 		assertNotEquals(SAFF, i4.getIngredientName());
-		assertNotEquals(EGG, i3.getIngredientName());
 		
 		assertEquals("Tbsp", i3.getUnit());
 		assertEquals(EGGP, i4.getUnit());
 		assertNotEquals("Tbsp", i4.getUnit());
 		assertNotEquals(EGGP, i3.getUnit());
 		
-		assertEquals(1, i3.getQuantity());
 		assertEquals(2, i4.getQuantity());
-		assertNotEquals(2, i3.getQuantity());
 		assertNotEquals(1, i4.getQuantity());
 		
 	}
@@ -59,18 +61,18 @@ public class RecipeIngredientIntegrationTest {
 	@Test
 	public void testSetIngredientList() {
 		Ingredient oldIng = new Ingredient(1, "Tbsp", SAFF);
-		ArrayList<Ingredient> oldList = new ArrayList<Ingredient>();
-		ArrayList<String> sList = new ArrayList<String>();
-		sList.add("Step 1");
-		sList.add("Step 2");
-		sList.add("Step 3");
+		ArrayList<Ingredient> oldList = new ArrayList<>();
+		ArrayList<String> stuffList = new ArrayList<>();
+		stuffList.add("Step 1");
+		stuffList.add("Step 2");
+		stuffList.add("Step 3");
 		oldList.add(oldIng);
 			
 		Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs recipe", 
-				oldList, sList);
+				oldList, stuffList);
 				
-		Ingredient newIng = new Ingredient(2, "Tbsp", SAFF);
-		ArrayList<Ingredient> newList = new ArrayList<Ingredient>();
+		Ingredient newIng = new Ingredient(2, "JEBS", "QUZA");
+		ArrayList<Ingredient> newList = new ArrayList<>();
 		newList.add(newIng);
 		r1.setIngredientList(newList);
 		

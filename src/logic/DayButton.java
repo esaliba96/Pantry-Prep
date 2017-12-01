@@ -2,8 +2,6 @@ package logic;
 
 import java.util.Calendar;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
 public class DayButton implements ButtonFactory {
@@ -14,12 +12,10 @@ public class DayButton implements ButtonFactory {
 		this.dayOfWeek = day.get(Calendar.DAY_OF_WEEK);
 		uf.addFactory(this);
 		write(c);
-		button.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				c.selectedDay = c.getWeek().getDay(dayOfWeek -1);
-				uf.update(c);
-			} 
-		});
+		button.setOnAction(event -> {
+         c.selectedDay = c.getWeek().getDay(dayOfWeek -1);
+         uf.update(c);
+      });
 	}
 	public void write(MyCalendar c){
 		Calendar day = c.getWeek().getDay(dayOfWeek -1);

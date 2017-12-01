@@ -10,6 +10,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Iterator;
+
 
 public class Database {
 
@@ -178,13 +180,16 @@ public class Database {
       BufferedWriter bw = new BufferedWriter(fw);
       PrintWriter out = new PrintWriter(bw);
 
-      for (String key : planner.keySet()) {
-         Day day = planner.get(key);
-         out.println(key);
-         out.println(getLineFromRecipe(day.getRecipe(0)));
-         out.println(getLineFromRecipe(day.getRecipe(1)));
-         out.println(getLineFromRecipe(day.getRecipe(2)));
-      }
+
+      for (Iterator<String> iterator = planner.keySet().iterator(); iterator.hasNext(); ) {
+          String key = iterator.next();
+          Day day = planner.get(key);
+          out.println(key);
+          out.println(getLineFromRecipe(day.getRecipe(0)));
+          out.println(getLineFromRecipe(day.getRecipe(1)));
+          out.println(getLineFromRecipe(day.getRecipe(2)));
+       }
+
 
       out.close();
    }

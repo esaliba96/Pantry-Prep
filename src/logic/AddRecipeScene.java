@@ -10,8 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.util.ArrayList;
 import java.io.IOException;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
@@ -21,7 +19,6 @@ import javafx.geometry.Orientation;
 
 class AddRecipeScene {
 
-	private static VBox vertDisplay;
 	private static VBox ingredientVbox;
 	private static VBox directionVbox;
 	private static HBox addRecipeStatus;
@@ -48,6 +45,7 @@ class AddRecipeScene {
 
 	@SuppressWarnings("unchecked")
 	static Scene getScene() {
+		VBox vertDisplay;
 		VBox nameSection;
 		VBox descriptionSection;
 		TextField quantityTextField;
@@ -68,12 +66,8 @@ class AddRecipeScene {
 		vertDisplay = new VBox();
 		vertDisplay.setSpacing(20);
 
-		sc.valueProperty().addListener(new ChangeListener<Number>() {
-			public void changed(ObservableValue<? extends Number> ov,
-				Number oldVal, Number newVal) {
-				vertDisplay.setLayoutY(-newVal.doubleValue());
-			}
-		});
+		sc.valueProperty().addListener(
+			(ov, oldVal, newVal) -> vertDisplay.setLayoutY(-newVal.doubleValue()));
 
 		root.getChildren().addAll(vertDisplay, sc);
 		// Page Title
@@ -113,7 +107,7 @@ class AddRecipeScene {
 		ingredientVbox.getChildren().addAll(ingredientLabel, recipeTextFields);
 		// Add More Ingredient Button and Action
 		addIngredientButton = new Button("Add Another Ingredient");
-		addIngredientButton.setOnAction(e -> buttonClicked(e));
+		addIngredientButton.setOnAction(AddRecipeScene::buttonClicked);
 		// Create TextField Arrays and add to them
 		quantityTextFieldList = new ArrayList<>();
 		unitComboBoxList = new ArrayList<>();
@@ -134,11 +128,11 @@ class AddRecipeScene {
 		directionVbox.getChildren().addAll(directionLabel, directionsTextField);
 		// Add More Steps Button and Action
 		addStepButton = new Button("Add Additional Step");
-		addStepButton.setOnAction(e -> buttonClicked(e));
+		addStepButton.setOnAction(AddRecipeScene::buttonClicked);
 
 		// Add Recipe Button
 		addRecipe = new Button("Add Recipe");
-		addRecipe.setOnAction(e -> buttonClicked(e));
+		addRecipe.setOnAction(AddRecipeScene::buttonClicked);
 
 		//Add Recipe Button Status
 		addRecipeStatus = new HBox();

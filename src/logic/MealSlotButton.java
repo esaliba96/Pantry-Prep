@@ -1,9 +1,5 @@
 package logic;
 
-import java.util.Calendar;
-
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class MealSlotButton implements ButtonFactory{
@@ -25,20 +21,18 @@ public class MealSlotButton implements ButtonFactory{
 
 		
 		
-		text.setOnMouseClicked(new EventHandler <MouseEvent>(){
-        	public void handle(MouseEvent event) {
-        		Day day = Database.getMealsFromPlanner(c.selectedDay);
+		text.setOnMouseClicked(event -> {
+         Day day = Database.getMealsFromPlanner(c.selectedDay);
 
-        		if (day != null) {
-        			recipe = day.getRecipe(meal);
-        			
-        			if(recipe != null){
-                		PantryPrep.stage.setScene(RecipeViewScene.getScene(recipe));
-            		}
-        		}
-        		event.consume();
-        	}
-        });
+         if (day != null) {
+            recipe = day.getRecipe(meal);
+            
+            if(recipe != null){
+                 PantryPrep.stage.setScene(RecipeViewScene.getScene(recipe));
+             }
+         }
+         event.consume();
+      });
 		//===============================================================
 
 		

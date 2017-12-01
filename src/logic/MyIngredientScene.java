@@ -1,8 +1,6 @@
 package logic;
 
 import java.util.ArrayList;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -87,7 +85,7 @@ public class MyIngredientScene {
       ingredientVbox.getChildren().addAll(ingredientLabel, recipeTextFields);
       // Add More Ingredient Button and Action
       addIngredientButton = new Button("Add Another Ingredient");
-      addIngredientButton.setOnAction(e -> buttonClicked(e));
+      addIngredientButton.setOnAction(MyIngredientScene::buttonClicked);
       // Create TextField Arrays and add to them
       quantityTextFieldList = new ArrayList<>();
       unitComboBoxList = new ArrayList<>();
@@ -98,7 +96,7 @@ public class MyIngredientScene {
 
       // Add Ingredients Button
       addMyIngredientsButton = new Button("Save My Ingredients");
-      addMyIngredientsButton.setOnAction(e -> buttonClicked(e));
+      addMyIngredientsButton.setOnAction(MyIngredientScene::buttonClicked);
 
       //Add Recipe Button Status
       addIngredientStatus = new HBox();
@@ -112,12 +110,8 @@ public class MyIngredientScene {
       vertDisplay.getChildren().addAll(NavigationBar.getNavigateBox(), pageTitle, pageMemo,
           ingredientVbox, addIngredientButton, addMyIngredientsButton, addIngredientStatus);
 
-      sc.valueProperty().addListener(new ChangeListener<Number>() {
-         public void changed(ObservableValue<? extends Number> ov,
-             Number oldValue, Number newValue) {
-            vertDisplay.setLayoutY(-newValue.doubleValue());
-         }
-      });
+      sc.valueProperty().addListener(
+          (ov, oldValue, newValue) -> vertDisplay.setLayoutY(-newValue.doubleValue()));
 
       root.getChildren().addAll(vertDisplay, sc);
 

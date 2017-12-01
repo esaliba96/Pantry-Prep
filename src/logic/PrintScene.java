@@ -1,7 +1,5 @@
 package logic;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,33 +31,25 @@ public class PrintScene {
 		Button begPrev = new Button("<-");
 		Label message = new Label();
 
-		begPrev.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				c.pi.beginningPrev();
-				uf.update(c);
-			}
-		});
+		begPrev.setOnAction(event -> {
+         c.pi.beginningPrev();
+         uf.update(c);
+      });
 		Button begNext = new Button("->");
-		begNext.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				c.pi.beginningNext();
-				uf.update(c);
-			}
-		});
+		begNext.setOnAction(event -> {
+         c.pi.beginningNext();
+         uf.update(c);
+      });
 		Button endPrev = new Button("<-");
-		endPrev.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				c.pi.endPrev();
-				uf.update(c);
-			}
-		});
+		endPrev.setOnAction(event -> {
+         c.pi.endPrev();
+         uf.update(c);
+      });
 		Button endNext = new Button("->");
-		endNext.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				c.pi.endNext();
-				uf.update(c);
-			}
-		});
+		endNext.setOnAction(event -> {
+         c.pi.endNext();
+         uf.update(c);
+      });
 
 		DayViewLabel begDayView = new DayViewLabel(uf, c, false);
 		DayViewLabel endDayView = new DayViewLabel(uf, c, true);
@@ -70,20 +60,18 @@ public class PrintScene {
 		root.getChildren().add(switchDayLayer);
 
 		Button printButton = new Button("Save");
-		printButton.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				message.setText("");
-				message.setTextFill(Color.web("#6b002f"));
-				if (!c.pi.validate()) {
-					message.setText("Invalid dates!");
-				} else if (!c.pi.printRecipes("shopping_list.txt")) {
-					message.setText("Unable to save shopping list to file!");
-				} else {
-					message.setTextFill(Color.web("#006b3c"));
-					message.setText("Successfully saved shopping list to file!");
-				}
-			}
-		});
+		printButton.setOnAction(event -> {
+         message.setText("");
+         message.setTextFill(Color.web("#6b002f"));
+         if (!c.pi.validate()) {
+            message.setText("Invalid dates!");
+         } else if (!c.pi.printRecipes("shopping_list.txt")) {
+            message.setText("Unable to save shopping list to file!");
+         } else {
+            message.setTextFill(Color.web("#006b3c"));
+            message.setText("Successfully saved shopping list to file!");
+         }
+      });
 
 		root.getChildren().add(printButton);
 		root.getChildren().add(message);

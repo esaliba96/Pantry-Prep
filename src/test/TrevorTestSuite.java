@@ -10,5 +10,5 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ IngredientTest.class, RecipeIngredientIntegrationTest.class })
 
 public class TrevorTestSuite {
-
+ 
 }

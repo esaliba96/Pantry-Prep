@@ -31,11 +31,11 @@ public class Database {
       return list;
    }
 
-   static Recipe getRecipeFromList(String name) {
+   public static Recipe getRecipeFromList(String name) {
       return recipes.get(name);
    }
 
-   static Day getMealsFromPlanner(Calendar cal) {
+   public static Day getMealsFromPlanner(Calendar cal) {
       StringBuilder sb = new StringBuilder(getMonthAsString(cal));
       sb.append(getDateAsString(cal));
       sb.append(cal.get(Calendar.YEAR));
@@ -57,7 +57,7 @@ public class Database {
       recipes.put(name, r);
    }
 
-   static void saveMealsToPlanner(Calendar cal, Day day) {
+   public static void saveMealsToPlanner(Calendar cal, Day day) {
       StringBuilder sb = new StringBuilder(getMonthAsString(cal));
       sb.append(getDateAsString(cal));
       sb.append(cal.get(Calendar.YEAR));

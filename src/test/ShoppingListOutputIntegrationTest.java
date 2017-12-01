@@ -58,6 +58,7 @@ public class ShoppingListOutputIntegrationTest {
 			outputScanner.close();
 			expectedScanner.close();
 		}
+		 output.delete();
 	}
 
 }

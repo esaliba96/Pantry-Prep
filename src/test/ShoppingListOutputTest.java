@@ -48,5 +48,6 @@ public class ShoppingListOutputTest {
 			outputScanner.close();
 			expectedScanner.close();
 		}
+		output.delete();
 	}
 }

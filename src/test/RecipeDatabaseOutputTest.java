@@ -76,5 +76,6 @@ public class RecipeDatabaseOutputTest {
 			outputScanner.close();
 			expectedScanner.close();
 		}
+		 output.delete();
 	}
 }

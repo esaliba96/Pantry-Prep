@@ -13,10 +13,14 @@ import logic.Recipe;
 
 public class RecipeIngredientIntegrationTest {
 
+	private static final String SAFF = "Saffron";
+	private static final String EGG = "Eggs";
+	private static final String EGGP = "(Eggs)";
+	
 	@Test
 	public void testGetIngredient() {
-		Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
-		Ingredient i2 = new Ingredient(2, "(Eggs)", "Eggs");
+		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
+		Ingredient i2 = new Ingredient(2, EGGP, EGG);
 		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
 		ArrayList<String> sList = new ArrayList<String>();
 		sList.add("Step 1");
@@ -35,15 +39,15 @@ public class RecipeIngredientIntegrationTest {
 		Ingredient i4 = testList.get(1);
 		assertEquals(2, testList.size());
 		
-		assertEquals("Saffron", i3.getIngredientName());
-		assertEquals("Eggs", i4.getIngredientName());
-		assertNotEquals("Saffron", i4.getIngredientName());
-		assertNotEquals("Eggs", i3.getIngredientName());
+		assertEquals(SAFF, i3.getIngredientName());
+		assertEquals(EGG, i4.getIngredientName());
+		assertNotEquals(SAFF, i4.getIngredientName());
+		assertNotEquals(EGG, i3.getIngredientName());
 		
 		assertEquals("Tbsp", i3.getUnit());
-		assertEquals("(Eggs)", i4.getUnit());
+		assertEquals(EGGP, i4.getUnit());
 		assertNotEquals("Tbsp", i4.getUnit());
-		assertNotEquals("(Eggs)", i3.getUnit());
+		assertNotEquals(EGGP, i3.getUnit());
 		
 		assertEquals(1, i3.getQuantity());
 		assertEquals(2, i4.getQuantity());
@@ -54,7 +58,7 @@ public class RecipeIngredientIntegrationTest {
 	
 	@Test
 	public void testSetIngredientList() {
-		Ingredient oldIng = new Ingredient(1, "Tbsp", "Saffron");
+		Ingredient oldIng = new Ingredient(1, "Tbsp", SAFF);
 		ArrayList<Ingredient> oldList = new ArrayList<Ingredient>();
 		ArrayList<String> sList = new ArrayList<String>();
 		sList.add("Step 1");
@@ -65,7 +69,7 @@ public class RecipeIngredientIntegrationTest {
 		Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs recipe", 
 				oldList, sList);
 				
-		Ingredient newIng = new Ingredient(2, "Tbsp", "Saffron");
+		Ingredient newIng = new Ingredient(2, "Tbsp", SAFF);
 		ArrayList<Ingredient> newList = new ArrayList<Ingredient>();
 		newList.add(newIng);
 		r1.setIngredientList(newList);

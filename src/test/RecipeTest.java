@@ -16,16 +16,17 @@ public class RecipeTest {
 
 	private static final String SAFF = "Saffron";
 	private static final String EGG = "Eggs";
+	private static final String EGGP = "(Eggs)";
 
 	@Test
 	public void testName() {
 		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
-		Ingredient i2 = new Ingredient(2, "(Eggs)", EGG);
+		Ingredient i2 = new Ingredient(2, EGGP, EGG);
 		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
 		ArrayList<String> sList = new ArrayList<String>();
-		sList.add("Step 1");
-		sList.add("Step 2");
-		sList.add("Step 3");
+		sList.add(" 1");
+		sList.add(" 2");
+		sList.add(" 3");
 		iList.add(i1);
 		iList.add(i2);
 		
@@ -43,12 +44,12 @@ public class RecipeTest {
 	@Test
 	public void testDescription() {
 		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
-		Ingredient i2 = new Ingredient(2, "(Eggs)", EGG);
+		Ingredient i2 = new Ingredient(2, EGGP, EGG);
 		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
 		ArrayList<String> sList = new ArrayList<String>();
-		sList.add("Step 1");
-		sList.add("Step 2");
-		sList.add("Step 3");
+		sList.add("  1");
+		sList.add("  2");
+		sList.add("  3");
 		iList.add(i1);
 		iList.add(i2);
 		
@@ -66,17 +67,17 @@ public class RecipeTest {
 	@Test
 	public void testIngredientList() {
 		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
-		Ingredient i2 = new Ingredient(2, "(Eggs)", EGG);
+		Ingredient i2 = new Ingredient(2, EGGP, EGG);
 		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
 		ArrayList<String> sList = new ArrayList<String>();
-		sList.add("Step 1");
-		sList.add("Step 2");
-		sList.add("Step 3");
+		sList.add(" 1 ");
+		sList.add(" 2 ");
+		sList.add(" 3 ");
 		iList.add(i1);
 		iList.add(i2);
 		
 		
-		Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs recipe", 
+		Recipe r1 = new Recipe("Saffron Eggs", "A saffron  recipe", 
 				iList, sList);
 		
 		
@@ -86,7 +87,7 @@ public class RecipeTest {
 		assertEquals(2, testList.size());
 		
 		assertEquals("Tbsp", i3.getUnit());
-		assertEquals("(Eggs)", i4.getUnit());
+		assertEquals(EGGP, i4.getUnit());
 		assertEquals(1, i3.getQuantity());
 		assertEquals(2, i4.getQuantity());
 		assertEquals(SAFF, i3.getIngredientName());
@@ -97,7 +98,7 @@ public class RecipeTest {
 	@Test
 	public void testInstructionList() {
 		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
-		Ingredient i2 = new Ingredient(2, "(Eggs)", EGG);
+		Ingredient i2 = new Ingredient(2, EGGP, EGG);
 		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
 		ArrayList<String> sList = new ArrayList<String>();
 		sList.add("Step 1");
@@ -107,7 +108,7 @@ public class RecipeTest {
 		iList.add(i2);
 		
 		
-		Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs recipe", 
+		Recipe r1 = new Recipe("Saffron Eggs", "A  eggs recipe", 
 				iList, sList);
 		
 		ArrayList<String> testList = (ArrayList<String>)r1.getInstructionList();

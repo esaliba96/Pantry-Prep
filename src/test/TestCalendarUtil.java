@@ -24,7 +24,7 @@ public class TestCalendarUtil {
 		}
 		start.setTime(currentDay);
 		Calendar end = CalendarUtil.getOffsetDate(start, 2);
-		assertEquals(17, end.get(end.DAY_OF_MONTH), 0);
+		assertEquals(17, end.get(Calendar.DAY_OF_MONTH), 0);
 	}
 	@Test
 	public void testOffsetUpperbound() {
@@ -38,7 +38,7 @@ public class TestCalendarUtil {
 		}
 		start.setTime(currentDay);
 		Calendar end = CalendarUtil.getOffsetDate(start, 2);
-		assertEquals(2, end.get(end.DAY_OF_MONTH), 0);
+		assertEquals(2, end.get(Calendar.DAY_OF_MONTH), 0);
 	}
 	@Test
 	public void testOffsetLowerbound() {
@@ -52,7 +52,7 @@ public class TestCalendarUtil {
 		}
 		start.setTime(currentDay);
 		Calendar end = CalendarUtil.getOffsetDate(start, -2);
-		assertEquals(30, end.get(end.DAY_OF_MONTH), 0);
+		assertEquals(30, end.get(Calendar.DAY_OF_MONTH), 0);
 	}
 
 }

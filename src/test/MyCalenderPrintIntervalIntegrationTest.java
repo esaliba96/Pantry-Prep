@@ -2,13 +2,9 @@
 package test;
 
 import static org.junit.Assert.*;
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
 import org.junit.Test;
-
-import logic.CalendarUtil;
 import logic.MyCalendar;
 
 public class MyCalenderPrintIntervalIntegrationTest {
@@ -26,5 +22,4 @@ public class MyCalenderPrintIntervalIntegrationTest {
 		c.pi.endPrev();
 		assertFalse(c.pi.validate());
 	}
-
 }

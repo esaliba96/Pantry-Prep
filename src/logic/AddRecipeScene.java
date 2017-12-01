@@ -30,12 +30,9 @@ class AddRecipeScene {
 	private static Button addRecipe;
 	private static TextField nameTextField;
 	private static TextField descriptionTextField;
-	private static ComboBox unitComboBox;
 	private static int stepCount = 1;
-	private static int ingredientCount = 1;
 	private static ArrayList<TextField> instructionTextFieldList;
 	private static ArrayList<TextField> quantityTextFieldList;
-	private static ArrayList<ComboBox> unitComboBoxList;
 	private static ArrayList<TextField> ingredientNameTextFieldList;
 	private static ArrayList<Ingredient> ingredientList = new ArrayList<>();
 	private static ArrayList<String> instructionList = new ArrayList<>();
@@ -43,9 +40,10 @@ class AddRecipeScene {
 	private static Label fieldError;
 	private static Label recipeAdded;
 	private static boolean previousError = false;
+	private static ComboBox unitComboBox;
+	private static ArrayList<ComboBox> unitComboBoxList;
 
 	private AddRecipeScene() {
-
 	}
 
 	@SuppressWarnings("unchecked")
@@ -160,7 +158,6 @@ class AddRecipeScene {
 	@SuppressWarnings("unchecked")
 	 private static void buttonClicked(ActionEvent e) {
 		if (e.getSource() == addIngredientButton) {
-			ingredientCount++;
 			HBox recipeTextFields = new HBox();
 			TextField quantityTextField = new TextField();
 			quantityTextField.setPromptText("Quantity");

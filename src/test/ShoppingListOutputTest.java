@@ -1,3 +1,4 @@
+//Person in Charge: Jason Lomsdalen
 package test;
 
 import static org.junit.Assert.*;
@@ -21,8 +22,6 @@ public class ShoppingListOutputTest {
 	
 	@Test
 	public void test() throws IOException{
-		assertEquals(1,1);
-		
 		//Construct my own Calendar Object, c
 		Calendar c = new GregorianCalendar(2017,11,15);
 		MyCalendar myCal = new MyCalendar(c);
@@ -49,5 +48,6 @@ public class ShoppingListOutputTest {
 			outputScanner.close();
 			expectedScanner.close();
 		}
+		output.delete();
 	}
 }

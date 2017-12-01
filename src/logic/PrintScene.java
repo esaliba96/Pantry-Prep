@@ -82,7 +82,6 @@ public class PrintScene {
 					message.setTextFill(Color.web("#006b3c"));
 					message.setText("Successfully saved shopping list to file!");
 				}
-
 			}
 		});
 

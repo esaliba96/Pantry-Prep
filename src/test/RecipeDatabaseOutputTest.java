@@ -1,3 +1,4 @@
+//Person in Charge: Jason Lomsdalen
 package test;
 
 import org.junit.Test;
@@ -32,14 +33,14 @@ public class RecipeDatabaseOutputTest {
 		sList.add("Step 3");
 		iList.add(i1);
 		iList.add(i2);
-		Recipe recipe = new Recipe("Green Eggs and Ham", "A saffron eggs recipe", iList, sList);
+		Recipe recipe = new Recipe("Popcorn and Butter", "A saffron eggs recipe", iList, sList);
 		
 		//Initialize Expected and Output txt files
 		final File expected = folder.newFile("expectedRecipeDatabase.txt");
 		FileWriter fw = new FileWriter(expected, true);
 	    BufferedWriter bw = new BufferedWriter(fw);
 	    PrintWriter out = new PrintWriter(bw);
-		out.println("Green Eggs and Ham");
+		out.println("Popcorn and Butter");
 		out.println("A saffron eggs recipe");
 		out.println("2");
 		out.println("3");
@@ -75,5 +76,6 @@ public class RecipeDatabaseOutputTest {
 			outputScanner.close();
 			expectedScanner.close();
 		}
+		 output.delete();
 	}
 }

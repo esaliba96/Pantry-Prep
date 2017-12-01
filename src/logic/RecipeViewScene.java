@@ -21,7 +21,6 @@ public class RecipeViewScene {
       root.getChildren().add(NavigationBar.getNavigateBox());
       root.setSpacing(15);
 
-
       HBox hbox = new HBox();
       VBox vbox1 = populateIngredientsList(r);
       VBox vbox2 = populateInstructionsList(r);
@@ -36,11 +35,7 @@ public class RecipeViewScene {
       root.getChildren().add(hbox);
       hbox.getChildren().add(vbox2);
       hbox.getChildren().add(vbox1);
-      
-      
-      
-      
-
+     
       return new Scene(root, 400, 400);
    }
 
@@ -82,7 +77,6 @@ public class RecipeViewScene {
    }
    
    public static void populateTitle(VBox root, Recipe r){
-	   
 	   Text title = new Text(r.getName());
 	   title.setFont(Font.font("Arial", FontWeight.BOLD, 14));
 	   root.getChildren().add(title);
@@ -93,8 +87,5 @@ public class RecipeViewScene {
 	   Text description = new Text("Description: " + r.getDescription());
 	      root.getChildren().add(description);
    }
-   
-   
-
 }
 

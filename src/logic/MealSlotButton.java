@@ -34,12 +34,7 @@ public class MealSlotButton implements ButtonFactory{
          event.consume();
       });
 		//===============================================================
-
-		
-		write(c);
-		
-		
-		
+		write(c);		
 	}
 	
 	public void write(MyCalendar c) {

@@ -4,9 +4,9 @@ import java.util.LinkedList;
 
 public class MyCalendar {
 	private LinkedList<Week> weeks;
-	public Calendar currentDay;
-	public Calendar selectedDay;
-	public PrintInterval pi;
+	Calendar currentDay;
+	Calendar selectedDay;
+	PrintInterval pi;
 	private int index = 0;
 	private int currentDayIndex = 0;
 	public MyCalendar(Calendar currentDay){
@@ -45,5 +45,16 @@ public class MyCalendar {
 		}
 		Week w = weeks.get(weekIndex);
 		return w.getDayRecipes(offsetWeekday % 7);
+	}
+	public PrintInterval getpi() {
+		return this.pi;
+	}
+	
+	public Calendar getCurrentDay() {
+		return this.currentDay;
+	}
+	
+	public Calendar getSelectedDay() {
+		return this.selectedDay;
 	}
 }

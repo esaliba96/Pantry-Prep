@@ -22,8 +22,8 @@ public class RecipeTest {
 	public void testName() {
 		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
 		Ingredient i2 = new Ingredient(2, EGGP, EGG);
-		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
-		ArrayList<String> sList = new ArrayList<String>();
+		ArrayList<Ingredient> iList = new ArrayList<>();
+		ArrayList<String> sList = new ArrayList<>();
 		sList.add(" 1");
 		sList.add(" 2");
 		sList.add(" 3");
@@ -45,8 +45,8 @@ public class RecipeTest {
 	public void testDescription() {
 		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
 		Ingredient i2 = new Ingredient(2, EGGP, EGG);
-		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
-		ArrayList<String> sList = new ArrayList<String>();
+		ArrayList<Ingredient> iList = new ArrayList<>();
+		ArrayList<String> sList = new ArrayList<>();
 		sList.add("  1");
 		sList.add("  2");
 		sList.add("  3");
@@ -68,8 +68,8 @@ public class RecipeTest {
 	public void testIngredientList() {
 		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
 		Ingredient i2 = new Ingredient(2, EGGP, EGG);
-		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
-		ArrayList<String> sList = new ArrayList<String>();
+		ArrayList<Ingredient> iList = new ArrayList<>();
+		ArrayList<String> sList = new ArrayList<>();
 		sList.add(" 1 ");
 		sList.add(" 2 ");
 		sList.add(" 3 ");
@@ -99,8 +99,8 @@ public class RecipeTest {
 	public void testInstructionList() {
 		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
 		Ingredient i2 = new Ingredient(2, EGGP, EGG);
-		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
-		ArrayList<String> sList = new ArrayList<String>();
+		ArrayList<Ingredient> iList = new ArrayList<>();
+		ArrayList<String> sList = new ArrayList<>();
 		sList.add("Step 1");
 		sList.add("Step 2");
 		sList.add("Step 3");

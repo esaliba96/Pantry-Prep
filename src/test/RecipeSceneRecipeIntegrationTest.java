@@ -27,8 +27,8 @@ public class RecipeSceneRecipeIntegrationTest {
 		VBox root = new VBox();
 		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
 		Ingredient i2 = new Ingredient(2, EGGP, EGG);
-		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
-		ArrayList<String> sList = new ArrayList<String>();
+		ArrayList<Ingredient> iList = new ArrayList<>();
+		ArrayList<String> sList = new ArrayList<>();
 		sList.add("Step 1");
 		sList.add("Step 2");
 		sList.add("Step 3");
@@ -47,8 +47,8 @@ public class RecipeSceneRecipeIntegrationTest {
 	
 		
 		VBox root = new VBox();
-		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
-		ArrayList<String> sList = new ArrayList<String>();
+		ArrayList<Ingredient> iList = new ArrayList<>();
+		ArrayList<String> sList = new ArrayList<>();
 		sList.add("Step 1");
 		
 		Recipe recipe = new Recipe(" Eggs", "A saffron eggs recipe", iList, sList);

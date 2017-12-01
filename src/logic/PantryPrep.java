@@ -7,34 +7,39 @@ import javafx.stage.Stage;
 
 public class PantryPrep extends Application {
 
-   static Stage stage;
+	static Stage stage;
 
-   public static void main(String[] args) {
-      launch(args);
-   }
+	public static void main(String[] args) {
+		launch(args);
+	}
 
-   @Override
-   public void start(Stage localStage) throws Exception {
-      Scene weeklyViewScene;
-      MyCalendar myCal;
+	public static void setupStage(Stage s) {
+		Scene weeklyViewScene;
+		MyCalendar myCal = new MyCalendar(Calendar.getInstance());
 
-      stage = localStage;
-      /* Load saved data, if any */
-      Database.readRecipesFromFile();
-      Database.readPlannerFromFile();
+		stage = s;
 
-      myCal = new MyCalendar(Calendar.getInstance());
+		// Application Title
+		stage.setTitle("PantryPrep");
 
-      //Application Title
-      stage.setTitle("PantryPrep");
+		NavigationBar.main(myCal, stage);
+		weeklyViewScene = new WeeklyViewScene(myCal);
 
-      NavigationBar.main(myCal, stage);
-      weeklyViewScene = new WeeklyViewScene(myCal);
+		stage.setScene(weeklyViewScene);
+		stage.setWidth(585);
+		stage.setHeight(600);
 
-      stage.setScene(weeklyViewScene);
-      stage.setWidth(585);
-      stage.setHeight(600);
+		stage.show();
+	}
 
-      stage.show();
-   }
+	@Override
+	public void start(Stage localStage) throws Exception {
+
+		/* Load saved data, if any */
+		Database.readRecipesFromFile();
+		Database.readPlannerFromFile();
+		
+		setupStage(localStage);
+
+	}
 }

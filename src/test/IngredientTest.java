@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import logic.Ingredient;
 
+//Trevor Brown
 public class IngredientTest {
 
 	@Test

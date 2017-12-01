@@ -75,9 +75,9 @@ public class PrintInterval {
 
 		List<Recipe> myList = getRecipes();
 		File f = new File(fileName);
-		FileWriter fw;
-		BufferedWriter bw;
-		PrintWriter out;
+		FileWriter fw = null;
+		BufferedWriter bw = null;
+		PrintWriter out = null;
 		
 		try {
 			fw = new FileWriter(f);
@@ -100,11 +100,12 @@ public class PrintInterval {
 			for (Ingredient i : myIngredients) {
 				out.printf("%s %d %s%n", i.getIngredientName(), i.getQuantity(), i.getUnit());
 			}
-
-			out.close();
+		
 		} catch (IOException e) {
 			return false;
-		} 
+		} finally {
+			out.close();
+		}
 		return true;
 
 	}

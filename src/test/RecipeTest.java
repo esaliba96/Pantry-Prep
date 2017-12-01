@@ -31,7 +31,7 @@ public class RecipeTest {
 		iList.add(i2);
 		
 		
-		Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs recipe", 
+		Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs ", 
 				iList, sList);
 		
 		assertEquals("Saffron Eggs", r1.getName());
@@ -54,7 +54,7 @@ public class RecipeTest {
 		iList.add(i2);
 		
 		
-		Recipe r1 = new Recipe("Saffron Eggs", "A saffron eggs recipe", 
+		Recipe r1 = new Recipe("Saffron SLADFJL;Eggs", "A saffron eggs recipe", 
 				iList, sList);
 		
 		assertEquals("A saffron eggs recipe", r1.getDescription());
@@ -77,7 +77,7 @@ public class RecipeTest {
 		iList.add(i2);
 		
 		
-		Recipe r1 = new Recipe("Saffron Eggs", "A saffron  recipe", 
+		Recipe r1 = new Recipe("Saffron LEggs", "A saffron  recipe", 
 				iList, sList);
 		
 		
@@ -108,7 +108,7 @@ public class RecipeTest {
 		iList.add(i2);
 		
 		
-		Recipe r1 = new Recipe("Saffron Eggs", "A  eggs recipe", 
+		Recipe r1 = new Recipe("Saffron KEggs", "A  eggs recipe", 
 				iList, sList);
 		
 		ArrayList<String> testList = (ArrayList<String>)r1.getInstructionList();

@@ -11,12 +11,16 @@ import org.junit.Test;
 import logic.Ingredient;
 import logic.Recipe;
 
+//Trevor Brown
 public class RecipeTest {
+
+	private static final String SAFF = "Saffron";
+	private static final String EGG = "Eggs";
 
 	@Test
 	public void testName() {
-		Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
-		Ingredient i2 = new Ingredient(2, "(Eggs)", "Eggs");
+		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
+		Ingredient i2 = new Ingredient(2, "(Eggs)", EGG);
 		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
 		ArrayList<String> sList = new ArrayList<String>();
 		sList.add("Step 1");
@@ -38,8 +42,8 @@ public class RecipeTest {
 	
 	@Test
 	public void testDescription() {
-		Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
-		Ingredient i2 = new Ingredient(2, "(Eggs)", "Eggs");
+		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
+		Ingredient i2 = new Ingredient(2, "(Eggs)", EGG);
 		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
 		ArrayList<String> sList = new ArrayList<String>();
 		sList.add("Step 1");
@@ -61,8 +65,8 @@ public class RecipeTest {
 	
 	@Test
 	public void testIngredientList() {
-		Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
-		Ingredient i2 = new Ingredient(2, "(Eggs)", "Eggs");
+		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
+		Ingredient i2 = new Ingredient(2, "(Eggs)", EGG);
 		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
 		ArrayList<String> sList = new ArrayList<String>();
 		sList.add("Step 1");
@@ -85,15 +89,15 @@ public class RecipeTest {
 		assertEquals("(Eggs)", i4.getUnit());
 		assertEquals(1, i3.getQuantity());
 		assertEquals(2, i4.getQuantity());
-		assertEquals("Saffron", i3.getIngredientName());
-		assertEquals("Eggs", i4.getIngredientName());
+		assertEquals(SAFF, i3.getIngredientName());
+		assertEquals(EGG, i4.getIngredientName());
 		
 	}
 	
 	@Test
 	public void testInstructionList() {
-		Ingredient i1 = new Ingredient(1, "Tbsp", "Saffron");
-		Ingredient i2 = new Ingredient(2, "(Eggs)", "Eggs");
+		Ingredient i1 = new Ingredient(1, "Tbsp", SAFF);
+		Ingredient i2 = new Ingredient(2, "(Eggs)", EGG);
 		ArrayList<Ingredient> iList = new ArrayList<Ingredient>();
 		ArrayList<String> sList = new ArrayList<String>();
 		sList.add("Step 1");

@@ -14,15 +14,15 @@ import org.junit.Test;
 import logic.CalendarUtil;
 
 public class TestCalendarUtil {
+	static final String FORMAT = "M/dd/yyyy";
 	@Test
 	public void testOffset() {
 		Calendar  start = Calendar.getInstance();
 		Date currentDay = new Date();
 		try {
-			currentDay = new SimpleDateFormat("M/dd/yyyy").parse("11/15/2017");
+			currentDay = new SimpleDateFormat(FORMAT).parse("11/15/2017");
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return;
 		}
 		start.setTime(currentDay);
 		Calendar end = CalendarUtil.getOffsetDate(start, 2);
@@ -33,10 +33,9 @@ public class TestCalendarUtil {
 		Calendar  start = Calendar.getInstance();
 		Date currentDay = new Date();
 		try {
-			currentDay = new SimpleDateFormat("M/dd/yyyy").parse("11/30/2017");
+			currentDay = new SimpleDateFormat(FORMAT).parse("11/30/2017");
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return;
 		}
 		start.setTime(currentDay);
 		Calendar end = CalendarUtil.getOffsetDate(start, 2);
@@ -47,10 +46,9 @@ public class TestCalendarUtil {
 		Calendar  start = Calendar.getInstance();
 		Date currentDay = new Date();
 		try {
-			currentDay = new SimpleDateFormat("M/dd/yyyy").parse("11/1/2017");
+			currentDay = new SimpleDateFormat(FORMAT).parse("11/1/2017");
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return;
 		}
 		start.setTime(currentDay);
 		Calendar end = CalendarUtil.getOffsetDate(start, -2);

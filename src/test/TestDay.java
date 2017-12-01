@@ -14,7 +14,7 @@ public class TestDay {
 
 	//Test to see if setRecipe saves the correct recipe and can return the correct recipe.
     @Test
-    public void DaySetRecipeWorks() {
+    public void daySetRecipeWorks() {
        
     		Day myDay = new Day();
     		
@@ -35,7 +35,7 @@ public class TestDay {
     
     //Test to see if you can set a recipe to a spot in a day, then reset it. 
     @Test
-    public void DaySetRecipeResetARecipe() {
+    public void daySetRecipeResetARecipe() {
     	Day myDay = new Day();
 		
 	Recipe myRecipe1 = new Recipe("Breakfast", null, null, null);

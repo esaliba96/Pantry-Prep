@@ -28,7 +28,7 @@ public class ShoppingListOutputTest {
 		//Then call 
 		final File output = new File("shoppingListDatabaseTestFile.txt");
 		output.delete();
-		myCal.pi.printRecipes("shoppingListDatabaseTestFile.txt");
+		myCal.getpi().printRecipes("shoppingListDatabaseTestFile.txt");
 		
 		final File expected = folder.newFile("expectedShoppingListDatabase.txt");
 		FileWriter fw = new FileWriter(expected, true);

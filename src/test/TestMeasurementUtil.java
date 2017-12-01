@@ -9,28 +9,28 @@ import org.junit.Test;
 public class TestMeasurementUtil {
 
     @Test
-    public void TestGetCup() {
+    public void testGetCup() {
     		Measurement myEnum = Measurement.CUP;
     		assertEquals(MeasurementUtil.getMeasurementNames(myEnum), "Cup(s)");
     		
     }
     @Test
-    public void TestGetIndividual() {
+    public void testGetIndividual() {
 		Measurement myEnum = Measurement.INDIVIDUAL;
 		assertEquals(MeasurementUtil.getMeasurementNames(myEnum), "Individual");
     }
     @Test
-    public void TestGetPound() {
+    public void testGetPound() {
 		Measurement myEnum = Measurement.POUND;
 		assertEquals(MeasurementUtil.getMeasurementNames(myEnum), "Pound(s)");
     }
     @Test
-    public void TestGetTablespoon() {
+    public void testGetTablespoon() {
 		Measurement myEnum = Measurement.TABLESPOON;
 		assertEquals(MeasurementUtil.getMeasurementNames(myEnum), "Tablespoon(s)");
     }
     @Test
-    public void TestGetTeaspoon() {
+    public void testGetTeaspoon() {
 		Measurement myEnum = Measurement.TEASPOON;
 		assertEquals(MeasurementUtil.getMeasurementNames(myEnum), "Teaspoon(s)");
     }

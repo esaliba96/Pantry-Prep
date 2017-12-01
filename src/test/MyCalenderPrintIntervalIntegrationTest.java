@@ -13,13 +13,13 @@ public class MyCalenderPrintIntervalIntegrationTest {
 	public void testInit() {
 		Calendar start = new GregorianCalendar(2017,11,15);
 		MyCalendar c = new MyCalendar(start);
-		assertEquals(15, c.pi.getBeginning().get(Calendar.DAY_OF_MONTH), 0);
+		assertEquals(0, 15, c.getpi().getBeginning().get(Calendar.DAY_OF_MONTH));
 	}
 	@Test
 	public void testValidation(){
 		Calendar start = new GregorianCalendar(2017,11,15);
 		MyCalendar c = new MyCalendar(start);
-		c.pi.endPrev();
-		assertFalse(c.pi.validate());
+		c.getpi().endPrev();
+		assertFalse(c.getpi().validate());
 	}
 }

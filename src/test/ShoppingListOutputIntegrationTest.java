@@ -38,7 +38,7 @@ public class ShoppingListOutputIntegrationTest {
 		//Then call 
 		final File output = new File("shoppingListDatabaseIntegrationTestFile.txt");
 		output.delete();
-		myCal.pi.printRecipes("shoppingListDatabaseIntegrationTestFile.txt");
+		myCal.getpi().printRecipes("shoppingListDatabaseIntegrationTestFile.txt");
 		
 		final File expected = folder.newFile("expectedShoppingListDatabaseIntegration.txt");
 		FileWriter fw = new FileWriter(expected, true);

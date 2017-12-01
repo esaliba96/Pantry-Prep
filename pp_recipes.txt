@@ -1,21 +1,13 @@
-TestRecipe
-TestRecipe
+Mom's Spaghetti
+Vomit on his sweater.
 1
 1
-salt
-Teaspoon(s)
-1
-eat the salt boi
-moms spaghetti
-description
-1
-1
-m&ms
+M&M's
 Cup(s)
 1
-eat m&ms
+Eat M&M's.
 Banana Bread
-Bread with bananans.
+Bread with bananas.
 6
 2
 bananas
@@ -38,14 +30,6 @@ Cup(s)
 1
 Combine all ingriedients in a large bowl.
 Pour in pan and bake in over at 400 degrees for 50 minutes.  
-testing recipe
-8
-1
-1
-dog
-Cup(s)
-1
-yes
 Corn
 Yellow corn
 1
@@ -54,22 +38,6 @@ sweet corn
 Cup(s)
 1
 Boil for 2 minutes in water.
-1
-2
-1
-1
-four
-Cup(s)
-3
-five
-Food
-Yummy!
-1
-1
-sauce
-Cup(s)
-1
-eat the sauce
 Brownies
 Yum?
 1
@@ -78,22 +46,6 @@ brownie
 Individual
 1
 Bake it.
-new
-blah
-1
-1
-sugar
-Tablespoon(s)
-1
-eat
-anotha one
-a
-1
-1
-b
-Cup(s)
-1
-a
 Waffles
 Grandma's Special Recipe
 1
